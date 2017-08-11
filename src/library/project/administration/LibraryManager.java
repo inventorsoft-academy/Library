@@ -1,178 +1,31 @@
 package library.project.administration;
 
 
-import library.project.model.Book;
 import library.project.model.User;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.*;
+
+import static library.project.administration.UserManager.enterByUser;
 
 public class LibraryManager {
 
-    public List<User> allUsers;
+    private  BookManager bookManager=new BookManager();
+    private  UserManager userManager=new UserManager();
 
-    public List<Book> allBooks;
-
-    private void checkMyBooks(User user) {
-        if (!user.readersListOfBooks.isEmpty()) {
-            for (Book a : user.readersListOfBooks) {
-                System.out.println("Name: " + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getName()
-                        + "\nAuthor: " + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getAuthor()
-                        + "\n Rent starts: " + allBooks.get(allBooks.indexOf(a)).getRentStart()
-                        + "\n Rent expires: " + allBooks.get(allBooks.indexOf(a)).getRentExpires());
-            }
-        } else
-            System.out.println("You do not reading now!");
-        openUserPanel(user);
-    }
-
-    public void getAllUsers() {
-        for (User a : allUsers) {
-            System.out.println("Reader name: " + allUsers.get(allUsers.indexOf(a)).getFirstName()
-                    + "  " + allUsers.get(allUsers.indexOf(a)).getLastName()
-                    + " ID: " + allUsers.get(allUsers.indexOf(a)).getReaderId());
-        }
-    }
-
-    private void getAllBooks(User user) {
-
-        for (Book a : allBooks) {
-            if (a.quantity != 0) System.out.println("Name: " + allBooks.get(allBooks.indexOf(a)).getName()
-                    + "  Author: " + allBooks.get(allBooks.indexOf(a)).getAuthor()
-                    + "   Quantity: " + allBooks.get(allBooks.indexOf(a)).getQuantity());
-        }
-        openUserPanel(user);
-    }
-
-    private void rentSomeBook(User user) {
-        for (Book a : allBooks) {
-            if (allBooks.get(allBooks.indexOf(a)).getQuantity() != 0)
-                System.out.println("( " + (allBooks.indexOf(a)) + " ) "
-                        + "Name: " + allBooks.get(allBooks.indexOf(a)).getName()
-                        + "  Author: " + allBooks.get(allBooks.indexOf(a)).getAuthor()
-                        + "   Quantity: " + allBooks.get(allBooks.indexOf(a)).getQuantity());
-        }
-        System.out.println("Which book u want to take:");
-        Scanner scanner = new Scanner(System.in);
-        int bookNum = scanner.nextInt();
-
-    if (!user.readersListOfBooks.contains(allBooks.get(bookNum))) {
-
-        user.readersListOfBooks.add(allBooks.get(bookNum));
-        rentStarts(user.readersListOfBooks.get(user.readersListOfBooks.indexOf(allBooks.get(bookNum))));
-        allBooks.get(bookNum).setQuantity(allBooks.get(bookNum).getQuantity() - 1);
-        System.out.println("The book was added to your reading list!");
-    }
-    else      System.out.println("You already have such book!");
-
-        System.out.println("Return to user panel(1) \nExit(2)?");
-        int thisWayOut = scanner.nextInt();
-        switch (thisWayOut) {
-            case 1:
-                openUserPanel(user);
-                break;
-            case 2:
-                break;
-        }
-    }
-
-    private void returnSomeBook(User user) {
-        if (!user.readersListOfBooks.isEmpty()) {
-            for (Book a : user.readersListOfBooks) {
-                System.out.println("( " + (user.readersListOfBooks.indexOf(a)) + " ) " + " Name: "
-                        + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getName()
-                        + "  Author: " + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getAuthor()
-                        + "\n Rent starts: " + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getRentStart()
-                        + "\n Rent expires: " + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getRentExpires());
-            }
-
-            System.out.println("Which book u want to return:");
-            Scanner scanner = new Scanner(System.in);
-            int bookNum = scanner.nextInt();
-
-
-            allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).setQuantity(
-                    allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).getQuantity() + 1);
-            allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).rentStarts = null;
-            allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).rentExpires = null;
-            user.readersListOfBooks.remove(user.readersListOfBooks.get(bookNum));
-            System.out.println("Nice boy! You returned a book!");
-            openUserPanel(user);
-        } else {
-            System.out.println("Your reading list is empty!");
-            openUserPanel(user);
-        }
-
-    }
-
-    private void registerUser() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter user first name:");
-        String fname = scanner.nextLine();
-        System.out.println("Enter user last name:");
-        String lname = scanner.nextLine();
-        System.out.println("Enter your passport number:");
-        String passportNum = scanner.nextLine();
-        User user = new User(fname, lname, passportNum);
-        allUsers.add(user);
-        System.out.println("User added!");
-        startScreen();
-
-    }
-
-    private static void rentStarts(Book book) {
-        book.rentStarts = new Date();
-        book.rentExpires = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(book.rentStarts);
-        book.rentStarts = c.getTime();
-        LocalDateTime ldt = LocalDateTime.ofInstant(book.rentStarts.toInstant(), ZoneId.systemDefault()).plusDays(7);
-        book.rentExpires = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
-
-
-    }
-
-    public void startScreen() {
+    public  void startScreen() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Register new user(1) \nLogin(2)");
         int a = sc.nextInt();
         switch (a) {
             case 1:
-                registerUser();
+                userManager.registerUser();
                 break;
             case 2:
-                enterByUser();
+                userManager.enterByUser();
                 break;
         }
     }
 
-    private void enterByUser() {
-System.out.println("git really works?");
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter user first name:");
-        String firstName = scanner.nextLine();
-        System.out.println("Enter user last name:");
-        String lastName = scanner.nextLine();
-
-        for (int i = 0; i < allUsers.size(); i++) {
-            if ((allUsers.get(i).getFirstName().equals(firstName)) && (allUsers.get(i).getLastName().equals(lastName))) {
-                System.out.println("You logged as: " + allUsers.get(i).getFirstName() + " " + allUsers.get(i).getLastName());
-                openUserPanel(allUsers.get(i));
-                break;
-            } else if ((firstName.equals("admin")) && (lastName.equals("admin"))) {
-                System.out.println("You logged as: admin ");
-                openAdminPanel();
-                break;
-
-            } else if (allUsers.size() == i + 1) {
-                System.out.println("There is no such user!");
-                break;
-            }
-        }
-
-    }
-
-    private void openAdminPanel() {
+       void openAdminPanel() {
         Scanner sc = new Scanner(System.in);
         System.out.println(
                 "Add new user(1) " +
@@ -227,28 +80,28 @@ System.out.println("git really works?");
     }
 
 
-    private void openUserPanel(User user) {
+     void openUserPanel(User user) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Check aviable book's(1) \nOrder book(2) \nReturn book(3) \nCheck my book's(4)\nExit(5)");
         int a = sc.nextInt();
         switch (a) {
             case 1: {
-                getAllBooks(user);
+                bookManager.getAllBooks(user);
                 break;
             }
 
             case 2: {
-                rentSomeBook(user);
+                bookManager.rentSomeBook(user);
                 break;
             }
 
             case 3: {
-                returnSomeBook(user);
+                bookManager.returnSomeBook(user);
                 break;
             }
 
             case 4: {
-                checkMyBooks(user);
+                bookManager.checkMyBooks(user);
                 break;
             }
 

@@ -1,6 +1,5 @@
 package library.project.model;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 public class Book {
@@ -9,16 +8,16 @@ public class Book {
     private String name;
     private String year;
     private String author;
-    private String jenre;
+    private String genre;
     public Date rentStarts;
     public Date rentExpires;
     public int quantity;
 
-    public Book(final String name,final String year,final String author,final String jenre, int quantity) {
+    public Book(final String name, final String year, final String author, final String genre, int quantity) {
         this.name = name;
         this.year = year;
         this.author = author;
-        this.jenre = jenre;
+        this.genre = genre;
         this.quantity = quantity;
     }
 
@@ -48,8 +47,8 @@ public class Book {
     }
 
 
-    public String getJenre() {
-        return jenre;
+    public String getGenre() {
+        return genre;
     }
 
 

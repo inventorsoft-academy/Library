@@ -1,6 +1,7 @@
 package library.project;
 
 import library.project.administration.LibraryManager;
+import library.project.administration.UserManager;
 import library.project.model.Book;
 import library.project.model.User;
 
@@ -11,18 +12,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        LibraryManager admin = new LibraryManager();
-        admin.allBooks = new ArrayList<>();
+        LibraryManager manager = new LibraryManager();
+        UserManager userManager=new UserManager();
+
+      /*  admin.allBooks = new ArrayList<>();
         admin.allUsers = new ArrayList<>();
 
         admin.allBooks.add(new Book("2000 lie pid vodoy", "1982", "Jul Vern", "fantacy", 1));
         admin.allBooks.add(new Book("sherlock holmes", "1973", "Konan Doile", "detective", 2));
         admin.allBooks.add(new Book("lord of the rings", "1996", "Tolkien", "fantacy", 3));
 
-        admin.allUsers.add(new User("Ivo",   "Bobul", "KT5347777"));
-        admin.allUsers.add(new User("Viktor","Pavlik","KT78667877"));
-        admin.allUsers.add( new User("Cory",  "Tailor","KT12345679"));
-        admin.allUsers.add(new User("Curt",  "Cobain","KT53466156"));
+        admin.allUsers.add(new User("Ivo", "Bobul", "KT5347777"));
+        admin.allUsers.add(new User("Viktor", "Pavlik", "KT78667877"));
+        admin.allUsers.add(new User("Cory", "Tailor", "KT12345679"));
+        admin.allUsers.add(new User("Curt", "Cobain", "KT53466156"));*/
 
         //admin.rentSomeBook(book2);
 
@@ -33,23 +36,17 @@ public class Main {
                     + "\n Rent expires: " +admin.allBooks.get(admin.allBooks.indexOf(a)).getRentExpires() );
         }*/
 
-       // admin.returnSomeBook(book1);
+        // admin.returnSomeBook(book1);
 
-       // admin.registerUser();
-       // admin.getAllUsers();
-       // admin.getAllBooks();
+        // admin.registerUser();
+        // admin.getAllUsers();
+        // admin.getAllBooks();
 
 
         //TODO:add work with file, finish admin metod's,admin panel
 
-    admin.startScreen();
-
-
 
     }
-
-
-
 
 
 }
