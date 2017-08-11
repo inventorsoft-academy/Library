@@ -1,14 +1,13 @@
-package library.project.LibraryAdministration;
+package library.project.administration;
 
 
 import library.project.model.Book;
 import library.project.model.User;
-
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
 
-public class Administration {
+public class LibraryManager {
 
     public List<User> allUsers;
 
@@ -48,28 +47,23 @@ public class Administration {
     private void rentSomeBook(User user) {
         for (Book a : allBooks) {
             if (allBooks.get(allBooks.indexOf(a)).getQuantity() != 0)
-                System.out.println("( " + (allBooks.indexOf(a)) + " ) " + "Name: " + allBooks.get(allBooks.indexOf(a)).getName()
+                System.out.println("( " + (allBooks.indexOf(a)) + " ) "
+                        + "Name: " + allBooks.get(allBooks.indexOf(a)).getName()
                         + "  Author: " + allBooks.get(allBooks.indexOf(a)).getAuthor()
                         + "   Quantity: " + allBooks.get(allBooks.indexOf(a)).getQuantity());
         }
         System.out.println("Which book u want to take:");
         Scanner scanner = new Scanner(System.in);
         int bookNum = scanner.nextInt();
-try {
-    if (user.readersListOfBooks.contains(allBooks.get(bookNum)))
-    throw new Exception();
 
-    user.readersListOfBooks.add(allBooks.get(bookNum));
-    rentStarts(user.readersListOfBooks.get(user.readersListOfBooks.indexOf(allBooks.get(bookNum))));
-    allBooks.get(bookNum).setQuantity(allBooks.get(bookNum).getQuantity() - 1);
-    System.out.println("The book was added to your reading list!");
+    if (!user.readersListOfBooks.contains(allBooks.get(bookNum))) {
 
-}
-catch(Exception a)
-{
-    System.out.println("You already reading this book!");
-
-}
+        user.readersListOfBooks.add(allBooks.get(bookNum));
+        rentStarts(user.readersListOfBooks.get(user.readersListOfBooks.indexOf(allBooks.get(bookNum))));
+        allBooks.get(bookNum).setQuantity(allBooks.get(bookNum).getQuantity() - 1);
+        System.out.println("The book was added to your reading list!");
+    }
+    else      System.out.println("You already have such book!");
 
         System.out.println("Return to user panel(1) \nExit(2)?");
         int thisWayOut = scanner.nextInt();
@@ -97,7 +91,8 @@ catch(Exception a)
             int bookNum = scanner.nextInt();
 
 
-            allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).setQuantity(allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).getQuantity() + 1);
+            allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).setQuantity(
+                    allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).getQuantity() + 1);
             allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).rentStarts = null;
             allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).rentExpires = null;
             user.readersListOfBooks.remove(user.readersListOfBooks.get(bookNum));

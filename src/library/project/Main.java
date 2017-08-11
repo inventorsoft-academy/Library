@@ -1,6 +1,6 @@
 package library.project;
 
-import library.project.LibraryAdministration.Administration;
+import library.project.administration.LibraryManager;
 import library.project.model.Book;
 import library.project.model.User;
 
@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Administration admin = new Administration();
+        LibraryManager admin = new LibraryManager();
         admin.allBooks = new ArrayList<>();
         admin.allUsers = new ArrayList<>();
 
