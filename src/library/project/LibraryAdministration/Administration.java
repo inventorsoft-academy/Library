@@ -10,11 +10,11 @@ import java.util.*;
 
 public class Administration {
 
-    public static List<User> allUsers;
+    public List<User> allUsers;
 
-    public static List<Book> allBooks;
+    public List<Book> allBooks;
 
-    public void checkMyBooks(User user) {
+    private void checkMyBooks(User user) {
         if (!user.readersListOfBooks.isEmpty()) {
             for (Book a : user.readersListOfBooks) {
                 System.out.println("Name: " + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getName()
@@ -35,7 +35,7 @@ public class Administration {
         }
     }
 
-    public void getAllBooks(User user) {
+    private void getAllBooks(User user) {
 
         for (Book a : allBooks) {
             if (a.quantity != 0) System.out.println("Name: " + allBooks.get(allBooks.indexOf(a)).getName()
@@ -45,7 +45,7 @@ public class Administration {
         openUserPanel(user);
     }
 
-    public void rentSomeBook(User user) {
+    private void rentSomeBook(User user) {
         for (Book a : allBooks) {
             if (allBooks.get(allBooks.indexOf(a)).getQuantity() != 0)
                 System.out.println("( " + (allBooks.indexOf(a)) + " ) " + "Name: " + allBooks.get(allBooks.indexOf(a)).getName()
@@ -55,27 +55,38 @@ public class Administration {
         System.out.println("Which book u want to take:");
         Scanner scanner = new Scanner(System.in);
         int bookNum = scanner.nextInt();
+try {
+    if (user.readersListOfBooks.contains(allBooks.get(bookNum)))
+    throw new Exception();
 
-        user.readersListOfBooks.add(allBooks.get(bookNum));
-        rentStarts(user.readersListOfBooks.get(user.readersListOfBooks.indexOf(allBooks.get(bookNum))));
-        allBooks.get(bookNum).setQuantity(allBooks.get(bookNum).getQuantity() - 1);
-        System.out.println("The book was added to your reading list!");
+    user.readersListOfBooks.add(allBooks.get(bookNum));
+    rentStarts(user.readersListOfBooks.get(user.readersListOfBooks.indexOf(allBooks.get(bookNum))));
+    allBooks.get(bookNum).setQuantity(allBooks.get(bookNum).getQuantity() - 1);
+    System.out.println("The book was added to your reading list!");
+
+}
+catch(Exception a)
+{
+    System.out.println("You already reading this book!");
+
+}
 
         System.out.println("Return to user panel(1) \nExit(2)?");
         int thisWayOut = scanner.nextInt();
         switch (thisWayOut) {
             case 1:
                 openUserPanel(user);
+                break;
             case 2:
                 break;
         }
-
     }
 
-    public void returnSomeBook(User user) {
+    private void returnSomeBook(User user) {
         if (!user.readersListOfBooks.isEmpty()) {
             for (Book a : user.readersListOfBooks) {
-                System.out.println("( " + (user.readersListOfBooks.indexOf(a)) + " ) " + " Name: " + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getName()
+                System.out.println("( " + (user.readersListOfBooks.indexOf(a)) + " ) " + " Name: "
+                        + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getName()
                         + "  Author: " + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getAuthor()
                         + "\n Rent starts: " + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getRentStart()
                         + "\n Rent expires: " + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getRentExpires());
@@ -226,20 +237,29 @@ public class Administration {
         System.out.println("Check aviable book's(1) \nOrder book(2) \nReturn book(3) \nCheck my book's(4)\nExit(5)");
         int a = sc.nextInt();
         switch (a) {
-            case 1:
-            {getAllBooks(user);}
+            case 1: {
+                getAllBooks(user);
+                break;
+            }
 
-            case 2:
-            {rentSomeBook(user);}
+            case 2: {
+                rentSomeBook(user);
+                break;
+            }
 
-            case 3:
-            { returnSomeBook(user);}
+            case 3: {
+                returnSomeBook(user);
+                break;
+            }
 
-            case 4:
-            {checkMyBooks(user);}
+            case 4: {
+                checkMyBooks(user);
+                break;
+            }
 
-            case 5:
-            {break;}
+            case 5: {
+                break;
+            }
         }
 
     }

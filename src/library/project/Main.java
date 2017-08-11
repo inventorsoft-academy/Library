@@ -15,9 +15,9 @@ public class Main {
         admin.allBooks = new ArrayList<>();
         admin.allUsers = new ArrayList<>();
 
-        admin.allBooks.add(new Book("100lie pod vodoi", "1973", "Jul Vern", "fantacy", 1));
-        admin.allBooks.add(new Book("200lie pod vodoi", "1973", "Jul Vern", "fantacy", 3));
-        admin.allBooks.add(new Book("300lie pod vodoi", "1973", "Jul Vern", "fantacy", 3));
+        admin.allBooks.add(new Book("2000 lie pid vodoy", "1982", "Jul Vern", "fantacy", 1));
+        admin.allBooks.add(new Book("sherlock holmes", "1973", "Konan Doile", "detective", 2));
+        admin.allBooks.add(new Book("lord of the rings", "1996", "Tolkien", "fantacy", 3));
 
         admin.allUsers.add(new User("Ivo",   "Bobul", "KT5347777"));
         admin.allUsers.add(new User("Viktor","Pavlik","KT78667877"));
@@ -40,7 +40,7 @@ public class Main {
        // admin.getAllBooks();
 
 
-        //TODO:Login or Register
+        //TODO:add work with file, finish admin metod's,admin panel
 
     admin.startScreen();
 
