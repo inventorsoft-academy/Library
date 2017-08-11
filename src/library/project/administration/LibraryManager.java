@@ -147,7 +147,7 @@ public class LibraryManager {
     }
 
     private void enterByUser() {
-
+System.out.println("git really works?");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter user first name:");
         String firstName = scanner.nextLine();
