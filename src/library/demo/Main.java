@@ -1,19 +1,15 @@
-package library.project;
+package library.demo;
 
-import library.project.administration.LibraryManager;
-import library.project.administration.UserManager;
-import library.project.model.Book;
-import library.project.model.User;
-
-import java.util.ArrayList;
+import library.managment.FileManager;
+import library.managment.LibraryManager;
 
 
 public class Main {
 
     public static void main(String[] args) {
+        //FileManager.getUsersList();
 
-        LibraryManager manager = new LibraryManager();
-        UserManager userManager=new UserManager();
+       LibraryManager.startScreen();
 
       /*  admin.allBooks = new ArrayList<>();
         admin.allUsers = new ArrayList<>();

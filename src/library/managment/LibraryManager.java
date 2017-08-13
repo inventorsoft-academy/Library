@@ -1,34 +1,37 @@
-package library.project.administration;
+package library.managment;
 
 
-import library.project.model.User;
+import library.model.User;
+
 import java.util.*;
-
-import static library.project.administration.UserManager.enterByUser;
 
 public class LibraryManager {
 
-    private  BookManager bookManager=new BookManager();
-    private  UserManager userManager=new UserManager();
+    private static BookManager bookManager=new BookManager();
+    private static UserManager userManager=new UserManager();
 
-    public  void startScreen() {
+    public static void startScreen() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Register new user(1) \nLogin(2)");
-        int a = sc.nextInt();
-        switch (a) {
+        System.out.println("1-- Register new user \n2-- Login");
+        switch (sc.nextInt()) {
             case 1:
                 userManager.registerUser();
                 break;
             case 2:
                 userManager.enterByUser();
                 break;
+                default:
+                {
+                    System.out.println("Incorrect variant!!!");
+                    startScreen();
+                 }
         }
     }
 
-       void openAdminPanel() {
+        static void openAdminPanel() {
         Scanner sc = new Scanner(System.in);
         System.out.println(
-                "Add new user(1) " +
+                        "\nAdd new user(1) " +
                         "\nUpdate user(2) " +
                         "\nDelete user(3) " +
                         "\nAdd new book(4)" +
@@ -40,8 +43,7 @@ public class LibraryManager {
                         "\nSave user's list to file(0)" +
                         "\nExit(10)");
 
-        int a = sc.nextInt();
-       /* switch (a) {
+       /* switch (sc.nextInt()) {
             case 1:
                 addUser();
                 break;
@@ -80,11 +82,10 @@ public class LibraryManager {
     }
 
 
-     void openUserPanel(User user) {
+      static void openUserPanel(User user) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Check aviable book's(1) \nOrder book(2) \nReturn book(3) \nCheck my book's(4)\nExit(5)");
-        int a = sc.nextInt();
-        switch (a) {
+        System.out.println("\n1-- Check available book's \n2-- Order book \n3-- Return book \n4-- Check my book's\n5-- Exit");
+        switch (sc.nextInt()) {
             case 1: {
                 bookManager.getAllBooks(user);
                 break;
@@ -106,11 +107,18 @@ public class LibraryManager {
             }
 
             case 5: {
+                System.out.println("Goodbye! Have a nice day!");
                 break;
+            }
+            default:
+            {
+                System.out.println("Incorrect variant!!!");
+                openUserPanel(user);
             }
         }
 
     }
+
 
 
 }

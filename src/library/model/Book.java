@@ -1,4 +1,4 @@
-package library.project.model;
+package library.model;
 
 import java.util.Date;
 
@@ -13,7 +13,7 @@ public class Book {
     public Date rentExpires;
     public int quantity;
 
-    public Book(final String name, final String year, final String author, final String genre, int quantity) {
+    public Book(final String name, final String author, final String year, final String genre, int quantity) {
         this.name = name;
         this.year = year;
         this.author = author;

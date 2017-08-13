@@ -1,25 +1,23 @@
-package library.project.administration;
+package library.managment;
 
-import library.project.model.User;
+import library.model.User;
 
 import java.util.List;
 import java.util.Scanner;
 
-import static library.project.administration.LibraryManager.openAdminPanel;
-import static library.project.administration.LibraryManager.openUserPanel;
-import static library.project.administration.LibraryManager.startScreen;
+import static library.managment.LibraryManager.openAdminPanel;
+import static library.managment.LibraryManager.openUserPanel;
+import static library.managment.LibraryManager.startScreen;
+
 
 public class UserManager {
 
-    public static List<User> allUsers;
-
-
-
+    private static  List<User> allUsers=FileManager.getUsersList();
 
 
       void registerUser() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter user first name:");
+        System.out.println("\nEnter user first name:");
         String fname = scanner.nextLine();
         System.out.println("Enter user last name:");
         String lname = scanner.nextLine();
@@ -28,20 +26,24 @@ public class UserManager {
         User user = new User(fname, lname, passportNum);
         allUsers.add(user);
         System.out.println("User added!");
+        FileManager.saveUsers(allUsers);
         startScreen();
 
     }
       void enterByUser() {
-        System.out.println("git really works?");
+
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter user first name:");
+        System.out.println("\nEnter user first name:");
         String firstName = scanner.nextLine();
         System.out.println("Enter user last name:");
         String lastName = scanner.nextLine();
 
         for (int i = 0; i < allUsers.size(); i++) {
-            if ((allUsers.get(i).getFirstName().equals(firstName)) && (allUsers.get(i).getLastName().equals(lastName))) {
-                System.out.println("You logged as: " + allUsers.get(i).getFirstName() + " " + allUsers.get(i).getLastName());
+            if ((allUsers.get(i).getFirstName().equals(firstName)) && (allUsers.get(i).getLastName().equals(lastName)))
+            {
+                System.out.println("You logged as: " + allUsers.get(i).getFirstName()
+                                                     + " " + allUsers.get(i).getLastName());
+
                 openUserPanel(allUsers.get(i));
                 break;
             } else if ((firstName.equals("admin")) && (lastName.equals("admin"))) {
@@ -49,8 +51,9 @@ public class UserManager {
                 openAdminPanel();
                 break;
 
-            } else if (allUsers.size() == i + 1) {
-                System.out.println("There is no such user!");
+            } else if ((allUsers.size() == i + 1)||(allUsers.isEmpty())) {
+                System.out.println("There is no such user! Try again!");
+                enterByUser();
                 break;
             }
         }
