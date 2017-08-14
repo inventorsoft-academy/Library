@@ -6,6 +6,8 @@ import library.model.User;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static library.managment.LibraryManager.openUserPanel;
 
@@ -16,13 +18,13 @@ public class BookManager {
 
     void checkMyBooks(User user) {
         if (!user.readersListOfBooks.isEmpty()) {
-            System.out.println("\nThe list of books u r reading: \n");
+            System.out.println("\nThe list of books you are reading: \n");
             for (Book a : user.readersListOfBooks) {
                 System.out.println(
                         "Name: " + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getName()
                         + "\nAuthor: " + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getAuthor()
-                        + "\n Rent starts: " + allBooks.get(allBooks.indexOf(a)).getRentStart()
-                        + "\n Rent expires: " + allBooks.get(allBooks.indexOf(a)).getRentExpires());
+                        + "\nRent starts: " + allBooks.get(allBooks.indexOf(a)).getRentStart()
+                        + "\nRent expires: " + allBooks.get(allBooks.indexOf(a)).getRentExpires());
             }
         } else
             System.out.println("\nYou do not reading now!");
@@ -41,60 +43,62 @@ public class BookManager {
     }
 
     void rentSomeBook(User user) {
-        for (Book a : allBooks) {
-            if (allBooks.get(allBooks.indexOf(a)).getQuantity() != 0)
-                System.out.println("(" + (allBooks.indexOf(a)) + ") "
-                        + "Name: " + allBooks.get(allBooks.indexOf(a)).getName()
-                        + "  Author: " + allBooks.get(allBooks.indexOf(a)).getAuthor()
-                        + "  Quantity: " + allBooks.get(allBooks.indexOf(a)).getQuantity());
-        }
-        System.out.println("\nWhich book u want to take:");
         Scanner scanner = new Scanner(System.in);
-        int bookNum = scanner.nextInt();
+        int bookNum;
 
-        if (!user.readersListOfBooks.contains(allBooks.get(bookNum))) {
 
-            user.readersListOfBooks.add(allBooks.get(bookNum));
-            rentStarts(user.readersListOfBooks.get(user.readersListOfBooks.indexOf(allBooks.get(bookNum))));
-            allBooks.get(bookNum).setQuantity(allBooks.get(bookNum).getQuantity() - 1);
-            System.out.println("\nThe book was added to your reading list!");
+            for (Book a : allBooks) {
+                if (allBooks.get(allBooks.indexOf(a)).getQuantity() != 0)
+                    System.out.println("(" + (allBooks.indexOf(a)) + ") "
+                            + "Name: " + allBooks.get(allBooks.indexOf(a)).getName()
+                            + "  Author: " + allBooks.get(allBooks.indexOf(a)).getAuthor()
+                            + "  Quantity: " + allBooks.get(allBooks.indexOf(a)).getQuantity());
+            }
+            System.out.println("\nWhich book u want to take:");
+
+            bookNum = scanner.nextInt();
+        if(!(bookNum>=allBooks.size())) {
+            if (!user.readersListOfBooks.contains(allBooks.get(bookNum))) {
+
+                user.readersListOfBooks.add(allBooks.get(bookNum));
+                rentStarts(user.readersListOfBooks.get(user.readersListOfBooks.indexOf(allBooks.get(bookNum))));
+                allBooks.get(bookNum).setQuantity(allBooks.get(bookNum).getQuantity() - 1);
+                System.out.println("\nThe book was added to your reading list!");
+            } else System.out.println("\nYou already have such book!");
+            returnToPanelOrExit(user,scanner);
         }
-        else      System.out.println("\nYou already have such book!");
-
-        System.out.println("\n1-- Return to user panel \n2-- Exit");
-        switch (scanner.nextInt()) {
-            case 1:
-                openUserPanel(user);
-                break;
-            case 2:
-                System.out.println("Goodbye! Have a nice day!");
-                break;
+        {System.out.println("\nIncorrect variant!!! Try again");
+            rentSomeBook(user);
         }
+
+
     }
 
      void returnSomeBook(User user) {
+         Scanner scanner = new Scanner(System.in);
         if (!user.readersListOfBooks.isEmpty()) {
             for (Book a : user.readersListOfBooks) {
                 System.out.println("(" + (user.readersListOfBooks.indexOf(a)) + ") "
                         + " Name: "
                         + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getName()
-                        + "  Author: "
+                        + " Author: "
                         + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getAuthor()
-                        + "\n Rent starts: "
+                        + "\nRent starts: "
                         + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getRentStart()
-                        + "\n Rent expires: "
+                        + "\nRent expires: "
                         + user.readersListOfBooks.get(user.readersListOfBooks.indexOf(a)).getRentExpires());
             }
 
             System.out.println("\nWhich book u want to return:");
-            Scanner scanner = new Scanner(System.in);
-            int bookNum = scanner.nextInt();
 
+            int bookNum = scanner.nextInt();
 
             allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).setQuantity(
                     allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).getQuantity() + 1);
+
             allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).rentStarts = null;
             allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).rentExpires = null;
+
             user.readersListOfBooks.remove(user.readersListOfBooks.get(bookNum));
             System.out.println("\nGood job! You returned a book!");
             openUserPanel(user);
@@ -103,7 +107,23 @@ public class BookManager {
             openUserPanel(user);
         }
 
+        returnToPanelOrExit(user,scanner);
+
     }
+
+private static void returnToPanelOrExit(User user,Scanner scanner){
+    System.out.println("\n1-- Return to user panel \n2-- Exit");
+    switch (scanner.nextInt()) {
+        case 1:
+            openUserPanel(user);
+            break;
+        case 2:
+            System.out.println("Goodbye! Have a nice day!");
+            break;
+    }
+
+
+}
 
     private static void rentStarts(Book book) {
         book.rentStarts = new Date();
@@ -113,8 +133,6 @@ public class BookManager {
         book.rentStarts = c.getTime();
         LocalDateTime ldt = LocalDateTime.ofInstant(book.rentStarts.toInstant(), ZoneId.systemDefault()).plusDays(7);
         book.rentExpires = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
-
-
     }
 
 
