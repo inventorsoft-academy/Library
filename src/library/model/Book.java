@@ -1,10 +1,11 @@
 package library.model;
 
+import library.service.Validator;
+
 import java.util.Date;
+import java.util.Map;
 
-public class Book {
-
-
+public class Book implements Validator{
     private String name;
     private String year;
     private String author;
@@ -58,5 +59,27 @@ public class Book {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    @Override
+    public Map<Object, String> validate() {
+        return null;
     }
 }

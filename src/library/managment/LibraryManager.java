@@ -12,15 +12,19 @@ public class LibraryManager {
     public static void startScreen() {
         Scanner sc = new Scanner(System.in);
         System.out.println("1-- Register new user "
-                        +"\n2-- Login");
+                + "\n2-- Login"
+                + "\n3-- Exit");
         try {
             switch (sc.nextInt()) {
                 case 1:
                     userManager.registerUser();
+                    startScreen();
                     break;
                 case 2:
                     userManager.enterByUser();
                     break;
+                case 3:
+                    exit();
                 default: {
                     System.out.println("Incorrect variant!!!Try again!");
                     startScreen();
@@ -35,56 +39,83 @@ public class LibraryManager {
     }
 
     static void openAdminPanel() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println(
-                "\nAdd new user(1) " +
-                        "\nUpdate user(2) " +
-                        "\nDelete user(3) " +
-                        "\nAdd new book(4)" +
-                        "\nUpdate book(5)" +
-                        "\nDelete book(6)" +
-                        "\nUpload book's list from file(7)" +
-                        "\nUpload user's list from file(8)" +
-                        "\nSave book's list to file(9)" +
-                        "\nSave user's list to file(0)" +
-                        "\nExit(10)");
+        try {
+            Scanner sc = new Scanner(System.in);
+            System.out.println(
+                    "\n1-- Register new user"
+                            + "\n2-- Update user"
+                            + "\n3-- Delete user"
+                            + "\n4-- Add new book"
+                            + "\n5-- Update book"
+                            + "\n6-- Delete book"
+                            + "\n7-- Save book's list to file"
+                            + "\n8-- Show all arrears"
+                            + "\n9-- Back to start screen"
+                            + "\n0-- Exit");
 
-       /* switch (sc.nextInt()) {
-            case 1:
-                addUser();
-                break;
-            case 2:
-                updateUser();
-                break;
-            case 3:
-                deleteUser();
-                break;
-            case 4:
-                addBook();
-                break;
-            case 5:
-                updateBook();
-                break;
-            case 6:
-                deleteBook();
-                break;
-            case 7:
-                uploadBooksListFromFile();
-                break;
-            case 8:
-                uploadUsersListFromFile();
-                break;
-            case 9:
-                saveBooksListToFile();
-                break;
-            case 0:
-               { saveUsersListToFile();
-                break;
-                case 10:
-                break;
-        }*/
+            switch (sc.nextInt()) {
+                case 1: {
+                    userManager.registerUser();
+                    openAdminPanel();
+                    break;
+                }
+                case 2: {
+                    userManager.update();
+                    openAdminPanel();
+                    break;
+                }
+                case 3: {
+                    userManager.delete();
+                    openAdminPanel();
+                    break;
+                }
+                case 4: {
+                    bookManager.addNewBook();
+                    openAdminPanel();
+                    break;
+                }
+                case 5: {
+                    bookManager.update();
+                    openAdminPanel();
+                    break;
+                }
+                case 6: {
+                    bookManager.delete();
+                    openAdminPanel();
+                    break;
+                }
+                case 7: {
+                    FileManager.saveBooks(bookManager.getBooks());
+                    openAdminPanel();
+                    break;
+                }
+                case 8: {
+                    showAllRentedBooks();
+                    openAdminPanel();
+                    break;
+                }
+                case 9: {
+                    startScreen();
+                    break;
+                }
+                case 0: {
+                    exit();
+                    break;
+                }
 
-        System.out.println("Admin panel");
+            }
+        }
+        catch (IndexOutOfBoundsException|InputMismatchException e)
+        {   System.out.println(e.getMessage());
+            e.printStackTrace();}
+    }
+
+    private static void showAllRentedBooks() {
+        for (User user : userManager.getUsers()) {
+            if (!user.getReadersListOfBooks().isEmpty())
+                System.out.println("\n"+"User: " + user.getFirstName() + " " + user.getLastName());
+                bookManager.checkReaderBooks(user);
+        }
     }
 
 
@@ -95,11 +126,13 @@ public class LibraryManager {
                 "\n2-- Order book " +
                 "\n3-- Return book " +
                 "\n4-- Check my book's" +
-                "\n5-- Exit");
+                "\n5-- Back to main screen" +
+                "\n6-- Exit");
         try {
             switch (sc.nextInt()) {
                 case 1: {
-                    bookManager.getAllBooks(user);
+                    bookManager.printAllAvailableBooks();
+                    openUserPanel(user);
                     break;
                 }
 
@@ -114,23 +147,30 @@ public class LibraryManager {
                 }
 
                 case 4: {
-                    bookManager.checkMyBooks(user);
+                    bookManager.checkReaderBooks(user);
+                    openUserPanel(user);
                     break;
                 }
-
                 case 5: {
-                    System.out.println("Goodbye! Have a nice day!");
+                    startScreen();
                     break;
+                }
+                case 6: {
+                    exit();
                 }
                 default: {
                     System.out.println("Incorrect variant!!! Try again!");
                     openUserPanel(user);
                 }
             }
-        } catch (InputMismatchException e) {
-            System.out.println("String inputted!!! Try again!");
+        } catch (InputMismatchException | IndexOutOfBoundsException e) {
+            System.out.println("Incorrect variant!!! Try again!(user panel exception)");
             openUserPanel(user);
         }
     }
 
+    private static void exit() {
+        System.out.println("Goodbye! Have a nice day!");
+        System.exit(1);
+    }
 }
