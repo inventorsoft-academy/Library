@@ -3,7 +3,6 @@ package library.managment;
 import library.model.Book;
 import library.model.User;
 import library.service.MyLogger;
-import library.service.Validator;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -21,14 +20,14 @@ public class BookManager implements Changer {
 
     void checkReaderBooks(User user) {
         if (user.readersListOfBooks.isEmpty()) {
-            System.out.println("\nYou do not reading now!");
+            log.info("\nYou do not reading now!");
         } else {
             printAllUsersBooks(user);
         }
     }
 
     void printAllBooks() {
-        allBooks.forEach(book -> System.out.println(
+        allBooks.forEach(book -> log.info(
                 "(" + allBooks.indexOf(book) + ") "
                         + "Name: " + book.getName()
                         + "  Author: " + book.getAuthor()
@@ -39,14 +38,14 @@ public class BookManager implements Changer {
     void printAllAvailableBooks() {
         allBooks.stream()
                 .filter(book -> book.getQuantity() != 0)
-                .forEach(book -> System.out.println("(" + (allBooks.indexOf(book)) + ") "
+                .forEach(book -> log.info("(" + (allBooks.indexOf(book)) + ") "
                         + "Name: " + book.getName()
                         + "  Author: " + book.getAuthor()
                         + "  Quantity: " + book.getQuantity()));
     }
 
     private void printAllUsersBooks(User user) {
-        user.readersListOfBooks.forEach(book -> System.out.println("(" + (user.readersListOfBooks.indexOf(book)) + ") "
+        user.readersListOfBooks.forEach(book -> log.info("(" + (user.readersListOfBooks.indexOf(book)) + ") "
                 + " Name: "
                 + book.getName()
                 + " Author: "
@@ -64,7 +63,7 @@ public class BookManager implements Changer {
 
         printAllAvailableBooks();
 
-        System.out.println("\nWhich book u want to take:");
+        log.info("\nWhich book u want to take:");
 
         bookNum = scanner.nextInt();
 
@@ -80,7 +79,7 @@ public class BookManager implements Changer {
             returnToPanelOrExit(user, scanner);
         }
         {
-            log.warn("\nIncorrect variant!!! Try again");
+            log.info("\nIncorrect variant!!! Try again");
             rentSomeBook(user);
         }
 
@@ -93,7 +92,7 @@ public class BookManager implements Changer {
 
             printAllUsersBooks(user);
 
-            System.out.println("\nWhich book u want to return:");
+            log.info("\nWhich book u want to return:");
             int bookNum = scanner.nextInt();
 
             allBooks.get(allBooks.indexOf(user.readersListOfBooks.get(bookNum))).setQuantity(
@@ -114,7 +113,7 @@ public class BookManager implements Changer {
     }
 
     private static void returnToPanelOrExit(User user, Scanner scanner) {
-        System.out.println("\n1-- Return to user panel \n2-- Exit");
+        log.info("\n1-- Return to user panel \n2-- Exit");
         switch (scanner.nextInt()) {
             case 1:
                 openUserPanel(user);
@@ -143,13 +142,13 @@ public class BookManager implements Changer {
         String author;
         String year;
         String genre;
-        System.out.println("\nEnter book name:");
+        log.info("\nEnter book name:");
         name = sc.nextLine();
-        System.out.println("\nEnter book author:");
+        log.info("\nEnter book author:");
         author = sc.nextLine();
-        System.out.println("\nEnter book year:");
+        log.info("\nEnter book year:");
         year = sc.nextLine();
-        System.out.println("\nEnter book genre:");
+        log.info("\nEnter book genre:");
         genre = sc.nextLine();
         Book newBook = new Book(name, author, year, genre, setQuantity());
 
@@ -158,7 +157,7 @@ public class BookManager implements Changer {
             log.info("\nThe book was added!");
             fileManager.saveBooks(allBooks);
         } else {
-            log.warn("Not valid data!");
+            log.info("Not valid data!");
             System.out.println(newBook.validate());
         }
 
@@ -169,7 +168,7 @@ public class BookManager implements Changer {
     public void delete() {
         Scanner sc = new Scanner(System.in);
         printAllBooks();
-        System.out.println("\nWhich book u want to delete?");
+        log.info("\nWhich book u want to delete?");
         int index = sc.nextInt();
         allBooks.remove(index);
         fileManager.saveBooks(allBooks);
@@ -185,14 +184,14 @@ public class BookManager implements Changer {
 
         printAllBooks();
 
-        System.out.println("\nWhich book u want to update?");
+        log.info("\nWhich book u want to update?");
         int index = sc.nextInt();
 
-        System.out.println("\nWhich field u want to update?" +
+        log.info("\nWhich field u want to update?" +
                 "\n1-- Name\n2-- Author\n3-- Year\n4-- Genre\n5-- Quantity");
         switch (sc.nextInt()) {
             case 1: {
-                System.out.println("\nEnter new name:");
+                log.info("\nEnter new name:");
                 allBooks.get(index).setName(sc1.nextLine());
                 break;
             }
@@ -202,12 +201,12 @@ public class BookManager implements Changer {
                 break;
             }
             case 3: {
-                System.out.println("\nEnter new year:");
+                log.info("\nEnter new year:");
                 allBooks.get(index).setYear(sc1.nextLine());
                 break;
             }
             case 4: {
-                System.out.println("\nEnter new genre:");
+                log.info("\nEnter new genre:");
                 allBooks.get(index).setGenre(sc1.nextLine());
                 break;
             }
@@ -216,7 +215,7 @@ public class BookManager implements Changer {
                 break;
             }
             default: {
-                log.warn("Wrong variant!Try again!!!");
+                log.info("Wrong variant!Try again!!!");
                 update();
             }
         }
@@ -228,11 +227,11 @@ public class BookManager implements Changer {
         Scanner sc = new Scanner(System.in);
         int quantity;
         try {
-            System.out.println("\nEnter new quantity:");
+            log.info("\nEnter new quantity:");
             quantity = sc.nextInt();
             if (quantity <= 0) throw new InputMismatchException();
         } catch (InputMismatchException a) {
-            log.warn("\nBad quantity!! Enter new quantity:");
+            log.info("\nBad quantity!! Enter new quantity:");
             quantity = sc.nextInt();
         }
         return quantity;

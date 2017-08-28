@@ -4,6 +4,7 @@ import library.managment.CustomFileManager;
 import library.managment.FileManager;
 import library.managment.JSONFileManager;
 import library.managment.LibraryManager;
+import library.model.Book;
 import library.model.User;
 
 import java.util.List;
@@ -16,10 +17,16 @@ public class Main {
 
         FileManager fileManagerTXT=new CustomFileManager();
         List<User> users=fileManagerTXT.getUsersList();
+        List<Book> books= fileManagerTXT.getBooksList();
 
-        fileManager.saveUsers(users);
-List<User> userss=fileManager.getUsersList();
-System.out.println(userss.get(0).getFirstName()+" "+userss.get(0).getLastName());
+
+
+        List<User> listFromJSON=fileManager.getUsersList();
+        List<Book> listFromJSON1=fileManager.getBooksList();
+
+        fileManager.saveUsers(listFromJSON);
+         fileManager.saveBooks(listFromJSON1);
+
       //  LibraryManager.startScreen();
 
     }

@@ -15,6 +15,7 @@ public class Book implements Validator {
     public Date rentExpires;
     public int quantity;
 
+    public Book(){};
     public Book(final String name, final String author, final String year, final String genre, int quantity) {
         this.name = name;
         this.year = year;

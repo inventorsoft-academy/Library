@@ -12,6 +12,7 @@ import static library.managment.LibraryManager.openUserPanel;
 
 public class UserManager implements Changer {
     private static final MyLogger log = MyLogger.getCommonClass(UserManager.class);
+
     private FileManager fileManager =new CustomFileManager();
     private List<User> allUsers=fileManager.getUsersList();
 

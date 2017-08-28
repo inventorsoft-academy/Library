@@ -5,8 +5,10 @@ import library.service.MyLogger;
 
 import java.util.*;
 
-public class LibraryManager {
+public class LibraryManager  {
+
     private static final MyLogger log = MyLogger.getCommonClass(LibraryManager.class);
+
     private static BookManager bookManager = new BookManager();
     private static UserManager userManager = new UserManager();
 

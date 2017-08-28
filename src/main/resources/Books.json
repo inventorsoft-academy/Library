@@ -1,0 +1,91 @@
+[ {
+  "name" : "Посторонний",
+  "year" : "1234",
+  "author" : "Альбер Камю",
+  "genre" : "повесть",
+  "rentStarts" : null,
+  "rentExpires" : null,
+  "quantity" : 3,
+  "rentStart" : null
+}, {
+  "name" : "В поисках утраченного времени",
+  "year" : "1927",
+  "author" : "Марсель Пруст",
+  "genre" : "полуавтобиографический",
+  "rentStarts" : null,
+  "rentExpires" : null,
+  "quantity" : 2,
+  "rentStart" : null
+}, {
+  "name" : "Процесс",
+  "year" : "1925",
+  "author" : "Франц Кафка",
+  "genre" : "роман",
+  "rentStarts" : null,
+  "rentExpires" : null,
+  "quantity" : 1,
+  "rentStart" : null
+}, {
+  "name" : "Маленький принц",
+  "year" : "1943",
+  "author" : "Антуан де Сент Экзюпери",
+  "genre" : "повесть-сказка",
+  "rentStarts" : null,
+  "rentExpires" : null,
+  "quantity" : 0,
+  "rentStart" : null
+}, {
+  "name" : "Гроздья гнева",
+  "year" : "1939",
+  "author" : "Джон Стейнбек",
+  "genre" : "роман",
+  "rentStarts" : null,
+  "rentExpires" : null,
+  "quantity" : 4,
+  "rentStart" : null
+}, {
+  "name" : "По ком звонит колокол",
+  "year" : "1940",
+  "author" : "Эрнест Хемингуэй",
+  "genre" : "роман",
+  "rentStarts" : null,
+  "rentExpires" : null,
+  "quantity" : 2,
+  "rentStart" : null
+}, {
+  "name" : "newbook",
+  "year" : "6666",
+  "author" : "neauth",
+  "genre" : "roman",
+  "rentStarts" : null,
+  "rentExpires" : null,
+  "quantity" : 3,
+  "rentStart" : null
+}, {
+  "name" : "Somenew",
+  "year" : "1234",
+  "author" : "author",
+  "genre" : "genre",
+  "rentStarts" : null,
+  "rentExpires" : null,
+  "quantity" : 3,
+  "rentStart" : null
+}, {
+  "name" : "newbook40",
+  "year" : "5432",
+  "author" : "somenewauthor",
+  "genre" : "genre",
+  "rentStarts" : null,
+  "rentExpires" : null,
+  "quantity" : 2,
+  "rentStart" : null
+}, {
+  "name" : "SomeNewBook",
+  "year" : "5432",
+  "author" : "newAuthor",
+  "genre" : "roman",
+  "rentStarts" : null,
+  "rentExpires" : null,
+  "quantity" : 2,
+  "rentStart" : null
+} ]
