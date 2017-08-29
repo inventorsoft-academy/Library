@@ -1,16 +1,16 @@
-package library.managment;
+package library.reprository.filemanager;
 
 import library.model.Book;
 import library.model.User;
-import library.service.MyLogger;
+import library.common.MyLogger;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class CustomFileManager implements FileManager {
-    private static final MyLogger log = MyLogger.getCommonClass(CustomFileManager.class);
+public class TXTFileManager implements FileManager {
+    private static final MyLogger log = MyLogger.getCommonClass(TXTFileManager.class);
 
     private static final String BOOKS_FILE_PATH = "src\\main\\resources\\Books.txt";
 

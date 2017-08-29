@@ -1,6 +1,6 @@
 package library.model;
 
-import library.service.Validator;
+import library.model.validation.Validator;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -16,6 +16,15 @@ public class Book implements Validator {
     public int quantity;
 
     public Book(){};
+
+    public Book(Book book){
+        this.name = book.getName();
+        this.year = book.getYear();
+        this.author = book.getAuthor();
+        this.genre = book.getGenre();
+        this.quantity = book.getQuantity();
+
+    };
     public Book(final String name, final String author, final String year, final String genre, int quantity) {
         this.name = name;
         this.year = year;
@@ -25,7 +34,7 @@ public class Book implements Validator {
     }
 
 
-    public Date getRentStart() {
+    public Date getRentStarts() {
         return rentStarts;
     }
 
@@ -104,7 +113,7 @@ public class Book implements Validator {
             valid.put("Name", "Impossible name length!");
         }
         if (quantity<=0) {
-            valid.put("Quantity", "Wring quantity");
+            valid.put("Quantity", "Wrong quantity!");
         }
 
         return valid;

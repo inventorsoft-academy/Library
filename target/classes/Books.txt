@@ -6,5 +6,5 @@
 По ком звонит колокол/Эрнест Хемингуэй/1940/роман/2
 newbook/neauth/6666/roman/3
 Somenew/author/1234/genre/3
+newbook40/somenewauthor/5432/genre/2
 SomeNewBook/newAuthor/5432/roman/2
-Властелин колец/Толкиен/1986/фантастика/5

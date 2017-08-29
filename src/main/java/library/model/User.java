@@ -1,10 +1,10 @@
 package library.model;
 
-import library.service.Validator;
+import library.model.validation.Validator;
 
 import java.util.*;
 
-public class    User implements Validator{
+public class    User implements Validator {
 
     private String firstName;
     private String lastName;
