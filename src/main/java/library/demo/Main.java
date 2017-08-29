@@ -13,7 +13,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        FileManager fileManager=new JSONFileManager();
+     /*   FileManager fileManager=new JSONFileManager();
 
         FileManager fileManagerTXT=new CustomFileManager();
         List<User> users=fileManagerTXT.getUsersList();
@@ -26,8 +26,8 @@ public class Main {
 
         fileManager.saveUsers(listFromJSON);
          fileManager.saveBooks(listFromJSON1);
-
-      //  LibraryManager.startScreen();
+*/
+        LibraryManager.startScreen();
 
     }
 }

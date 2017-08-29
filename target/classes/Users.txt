@@ -4,9 +4,9 @@ Lolita/Ivanova/KT56789
 Ivan/Petrovich/KT1234567
 Pedro/Gonzales/AU123456
 Andre/De lave/FU666543
-Lol/Caige/kumisLove
 Ivan/Ivan/RT3Ivan
 Ivan/newlastname/RT654321
 Ivan/Wer/KT123456
 Vasil/Petrov/IV123456
-new/new/KT123456
+Manson/new/KT123456
+Buben/Ivanov/TR123456

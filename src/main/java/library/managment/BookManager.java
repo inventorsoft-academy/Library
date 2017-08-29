@@ -27,7 +27,7 @@ public class BookManager implements Changer {
     }
 
     void printAllBooks() {
-        allBooks.forEach(book -> log.info(
+        allBooks.forEach(book -> System.out.println(
                 "(" + allBooks.indexOf(book) + ") "
                         + "Name: " + book.getName()
                         + "  Author: " + book.getAuthor()
@@ -38,14 +38,14 @@ public class BookManager implements Changer {
     void printAllAvailableBooks() {
         allBooks.stream()
                 .filter(book -> book.getQuantity() != 0)
-                .forEach(book -> log.info("(" + (allBooks.indexOf(book)) + ") "
+                .forEach(book -> System.out.println("(" + (allBooks.indexOf(book)) + ") "
                         + "Name: " + book.getName()
                         + "  Author: " + book.getAuthor()
                         + "  Quantity: " + book.getQuantity()));
     }
 
     private void printAllUsersBooks(User user) {
-        user.readersListOfBooks.forEach(book -> log.info("(" + (user.readersListOfBooks.indexOf(book)) + ") "
+        user.readersListOfBooks.forEach(book -> System.out.println("(" + (user.readersListOfBooks.indexOf(book)) + ") "
                 + " Name: "
                 + book.getName()
                 + " Author: "
@@ -113,13 +113,13 @@ public class BookManager implements Changer {
     }
 
     private static void returnToPanelOrExit(User user, Scanner scanner) {
-        log.info("\n1-- Return to user panel \n2-- Exit");
+        System.out.println("\n1-- Return to user panel \n2-- Exit");
         switch (scanner.nextInt()) {
             case 1:
                 openUserPanel(user);
                 break;
             case 2:
-                log.info("Goodbye! Have a nice day!");
+                System.out.println("Goodbye! Have a nice day!");
                 break;
         }
 
@@ -142,13 +142,13 @@ public class BookManager implements Changer {
         String author;
         String year;
         String genre;
-        log.info("\nEnter book name:");
+        System.out.println("\nEnter book name:");
         name = sc.nextLine();
-        log.info("\nEnter book author:");
+        System.out.println("\nEnter book author:");
         author = sc.nextLine();
-        log.info("\nEnter book year:");
+        System.out.println("\nEnter book year:");
         year = sc.nextLine();
-        log.info("\nEnter book genre:");
+        System.out.println("\nEnter book genre:");
         genre = sc.nextLine();
         Book newBook = new Book(name, author, year, genre, setQuantity());
 
@@ -168,7 +168,7 @@ public class BookManager implements Changer {
     public void delete() {
         Scanner sc = new Scanner(System.in);
         printAllBooks();
-        log.info("\nWhich book u want to delete?");
+        System.out.println("\nWhich book u want to delete?");
         int index = sc.nextInt();
         allBooks.remove(index);
         fileManager.saveBooks(allBooks);
@@ -184,14 +184,14 @@ public class BookManager implements Changer {
 
         printAllBooks();
 
-        log.info("\nWhich book u want to update?");
+        System.out.println("\nWhich book u want to update?");
         int index = sc.nextInt();
 
-        log.info("\nWhich field u want to update?" +
+        System.out.println("\nWhich field u want to update?" +
                 "\n1-- Name\n2-- Author\n3-- Year\n4-- Genre\n5-- Quantity");
         switch (sc.nextInt()) {
             case 1: {
-                log.info("\nEnter new name:");
+                System.out.println("\nEnter new name:");
                 allBooks.get(index).setName(sc1.nextLine());
                 break;
             }
@@ -227,7 +227,7 @@ public class BookManager implements Changer {
         Scanner sc = new Scanner(System.in);
         int quantity;
         try {
-            log.info("\nEnter new quantity:");
+            System.out.println("\nEnter new quantity:");
             quantity = sc.nextInt();
             if (quantity <= 0) throw new InputMismatchException();
         } catch (InputMismatchException a) {

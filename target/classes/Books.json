@@ -5,8 +5,8 @@
   "genre" : "повесть",
   "rentStarts" : null,
   "rentExpires" : null,
-  "quantity" : 3
-
+  "quantity" : 3,
+  "rentStart" : null
 }, {
   "name" : "В поисках утраченного времени",
   "year" : "1927",
@@ -14,8 +14,8 @@
   "genre" : "полуавтобиографический",
   "rentStarts" : null,
   "rentExpires" : null,
-  "quantity" : 2
-
+  "quantity" : 2,
+  "rentStart" : null
 }, {
   "name" : "Процесс",
   "year" : "1925",
@@ -23,8 +23,8 @@
   "genre" : "роман",
   "rentStarts" : null,
   "rentExpires" : null,
-  "quantity" : 1
-
+  "quantity" : 1,
+  "rentStart" : null
 }, {
   "name" : "Маленький принц",
   "year" : "1943",
@@ -32,8 +32,8 @@
   "genre" : "повесть-сказка",
   "rentStarts" : null,
   "rentExpires" : null,
-  "quantity" : 0
-
+  "quantity" : 2,
+  "rentStart" : null
 }, {
   "name" : "Гроздья гнева",
   "year" : "1939",
@@ -41,7 +41,8 @@
   "genre" : "роман",
   "rentStarts" : null,
   "rentExpires" : null,
-  "quantity" : 4
+  "quantity" : 4,
+  "rentStart" : null
 }, {
   "name" : "По ком звонит колокол",
   "year" : "1940",
@@ -49,7 +50,8 @@
   "genre" : "роман",
   "rentStarts" : null,
   "rentExpires" : null,
-  "quantity" : 2
+  "quantity" : 2,
+  "rentStart" : null
 }, {
   "name" : "newbook",
   "year" : "6666",
@@ -57,7 +59,8 @@
   "genre" : "roman",
   "rentStarts" : null,
   "rentExpires" : null,
-  "quantity" : 3
+  "quantity" : 3,
+  "rentStart" : null
 }, {
   "name" : "Somenew",
   "year" : "1234",
@@ -65,7 +68,8 @@
   "genre" : "genre",
   "rentStarts" : null,
   "rentExpires" : null,
-  "quantity" : 3
+  "quantity" : 3,
+  "rentStart" : null
 }, {
   "name" : "newbook40",
   "year" : "5432",
@@ -73,7 +77,8 @@
   "genre" : "genre",
   "rentStarts" : null,
   "rentExpires" : null,
-  "quantity" : 2
+  "quantity" : 2,
+  "rentStart" : null
 }, {
   "name" : "SomeNewBook",
   "year" : "5432",
@@ -81,5 +86,6 @@
   "genre" : "roman",
   "rentStarts" : null,
   "rentExpires" : null,
-  "quantity" : 2
+  "quantity" : 2,
+  "rentStart" : null
 } ]

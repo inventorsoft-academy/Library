@@ -24,13 +24,13 @@ public class UserManager implements Changer {
       void registerUser() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\nEnter user first name:");
+          System.out.println("\nEnter user first name:");
         String fname = scanner.nextLine();
 
-        System.out.println("Enter user last name:");
+          System.out.println("Enter user last name:");
         String lname = scanner.nextLine();
 
-        System.out.println("Enter your passport number:");
+          System.out.println("Enter your passport number:");
         String passportNum = scanner.nextLine();
 
         User user = new User(fname, lname, passportNum);
@@ -40,7 +40,7 @@ public class UserManager implements Changer {
               log.info("User added!");
               fileManager.saveUsers(allUsers);
           } else {
-             log.warn("Not valid data!");
+              log.info("Not valid data!");
               System.out.println(user.validate());
           }
 
@@ -50,10 +50,10 @@ public class UserManager implements Changer {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\nEnter user first name:");
+          System.out.println("\nEnter user first name:");
         String firstName = scanner.nextLine();
 
-        System.out.println("Enter user last name:");
+          System.out.println("Enter user last name:");
         String lastName = scanner.nextLine();
 
         for (int i = 0; i < allUsers.size(); i++) {
@@ -71,7 +71,7 @@ public class UserManager implements Changer {
                 break;
 
             } else if ((allUsers.size() == i + 1)||(allUsers.isEmpty())) {
-                log.warn("There is no such user! Try again!");
+                log.info("There is no such user! Try again!");
                 enterByUser();
                 break;
             }
@@ -79,14 +79,12 @@ public class UserManager implements Changer {
 
     }
 
-
-
-    public void printAllUsers() {
+    void printAllUsers() {
         for (User a : allUsers) {
             System.out.println("("+allUsers.indexOf(a)+")"
                     + " Reader name: " + allUsers.get(allUsers.indexOf(a)).getFirstName()
                     + "  " + allUsers.get(allUsers.indexOf(a)).getLastName()
-                    + " ID: " + allUsers.get(allUsers.indexOf(a)).getReaderId());
+                    + " Passport: " +allUsers.get(allUsers.indexOf(a)).getPassportNumber() );
         }
     }
 
