@@ -1,10 +1,13 @@
 package library.model;
 
 import library.model.validation.Validator;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.*;
-
-public class    User implements Validator {
+@Getter
+@Setter
+public class User implements Validator {
 
     private String firstName;
     private String lastName;

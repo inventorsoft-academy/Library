@@ -1,4 +1,4 @@
-package library.reprository.filemanager;
+package library.reprository.filerepro;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.type.CollectionType;
 import library.model.Book;
 import library.model.User;
 import library.common.MyLogger;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 
@@ -23,7 +22,6 @@ public class JSONFileManager implements FileManager {
 
     private static final String USERS_FILE_PATH = "src\\main\\resources\\Users.json";
 
-    @Nullable
     private <T> List<T> readValues(String pathToFile, Class<T> clazz) {
         ObjectMapper mapper =new ObjectMapper();
         CollectionType collectionType = mapper.getTypeFactory().constructCollectionType(List.class, clazz);

@@ -1,14 +1,15 @@
-package library.reprository.filemanager;
+package library.reprository.filerepro;
 
 import library.model.Book;
 import library.model.User;
 import library.common.MyLogger;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Component
 public class TXTFileManager implements FileManager {
     private static final MyLogger log = MyLogger.getCommonClass(TXTFileManager.class);
 
@@ -42,8 +43,8 @@ public class TXTFileManager implements FileManager {
                 String[] currentLine;
                 while ((line = reader.readLine()) != null) {
                     currentLine = line.split("/");
-                    booksList.add(new Book(currentLine[0], currentLine[1], currentLine[2],
-                            currentLine[3], Integer.parseInt(currentLine[4])));
+                    booksList.add(new Book(Long.parseLong(currentLine[0]), currentLine[1], currentLine[2],
+                            currentLine[3],currentLine[4],Integer.parseInt(currentLine[5])));
                 }
             } catch (IOException e) {
                 log.error("FILE NOT FOUND!"+"\n"+e.getMessage());

@@ -1,12 +1,18 @@
 package library.model;
 
 import library.model.validation.Validator;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+@Getter
+@Setter
 public class Book implements Validator {
+    private Long id;
     private String name;
     private String year;
     private String author;
@@ -18,14 +24,15 @@ public class Book implements Validator {
     public Book(){};
 
     public Book(Book book){
-        this.name = book.getName();
-        this.year = book.getYear();
-        this.author = book.getAuthor();
-        this.genre = book.getGenre();
-        this.quantity = book.getQuantity();
+        this.name = book.name;
+        this.year = book.year;
+        this.author = book.author;
+        this.genre = book.genre;
+        this.quantity = book.quantity;
 
     };
-    public Book(final String name, final String author, final String year, final String genre, int quantity) {
+    public Book(final Long id,final String name, final String author, final String year, final String genre, int quantity) {
+        this.id=id;
         this.name = name;
         this.year = year;
         this.author = author;
@@ -33,6 +40,7 @@ public class Book implements Validator {
         this.quantity = quantity;
     }
 
+/*
 
     public Date getRentStarts() {
         return rentStarts;
@@ -87,6 +95,7 @@ public class Book implements Validator {
     public void setGenre(String genre) {
         this.genre = genre;
     }
+*/
 
     @Override
     public Map<String, String> validate() {
