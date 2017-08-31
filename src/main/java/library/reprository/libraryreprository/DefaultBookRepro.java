@@ -51,18 +51,27 @@ public class DefaultBookRepro implements BookRepro  {
     }
 
     @Override
-    public void update(int book_id, Book changedBook) {
-
+    public void update(int id, Book changedBook) {
+        storage.get(id).setName(changedBook.getName());
+        storage.get(id).setAuthor(changedBook.getAuthor());
+        storage.get(id).setYear(changedBook.getYear());
+        storage.get(id).setGenre(changedBook.getGenre());
+        storage.get(id).setQuantity(changedBook.getQuantity());
     }
 
     @Override
     public Optional<Book> findByName(String name) {
-        return null;
+        return storage.stream().filter(info -> info.getName().equals(name)).findAny();
     }
 
     @Override
     public Optional<Book> findById(Long id) {
         return storage.stream().filter(info -> info.getId().equals(id)).findAny();
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        return storage.removeIf(info -> info.getId().equals(id));
     }
 
 }

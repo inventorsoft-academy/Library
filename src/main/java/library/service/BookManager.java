@@ -84,12 +84,13 @@ public class BookManager implements Deleter, BookService {
 
     @Override
     public void update(int id, Book changedBook) {
-        allBooks.get(id).setName(changedBook.getName());
+        bookRepro.update(id,changedBook);
+       /* allBooks.get(id).setName(changedBook.getName());
         allBooks.get(id).setAuthor(changedBook.getAuthor());
         allBooks.get(id).setYear(changedBook.getYear());
         allBooks.get(id).setGenre(changedBook.getGenre());
         allBooks.get(id).setQuantity(changedBook.getQuantity());
-        fileManager.saveBooks(allBooks);
+        fileManager.saveBooks(allBooks);*/
     }
 
     @Override
@@ -100,6 +101,11 @@ public class BookManager implements Deleter, BookService {
     @Override
     public Optional<Book> findById(Long id) {
         return bookRepro.findById(id);
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        return bookRepro.delete(id);
     }
 
 

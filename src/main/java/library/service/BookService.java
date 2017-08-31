@@ -16,4 +16,5 @@ public interface BookService {
     void update(int book_id,Book changedBook);
     Optional<Book> findByName(final String name);
     Optional<Book> findById(final Long id);
+    boolean delete(Long id);
 }
