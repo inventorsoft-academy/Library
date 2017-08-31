@@ -39,6 +39,13 @@ public class Book implements Validator {
         this.genre = genre;
         this.quantity = quantity;
     }
+    public Book(final String name, final String author, final String year, final String genre, int quantity) {
+        this.name = name;
+        this.year = year;
+        this.author = author;
+        this.genre = genre;
+        this.quantity = quantity;
+    }
 
 /*
 

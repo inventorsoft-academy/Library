@@ -7,22 +7,20 @@ CREATE DATABASE "Library123"
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 
-CREATE TABLE public."Books"
+CREATE TABLE books
 (
     "Id" integer NOT NULL,
-    "Name" "char"[] NOT NULL,
-    "Author" "char"[] NOT NULL,
-    "Year" numeric NOT NULL,
-    "Genre" "char"[] NOT NULL,
-    "Quantity" "char"[] NOT NULL,
-    CONSTRAINT "Books_pkey" PRIMARY KEY ("Id")
-)
-WITH (
-    OIDS = FALSE
-)
-TABLESPACE pg_default;
+    "Name" VARCHAR(50) NOT NULL,
+    "Author" VARCHAR(50) NOT NULL,
+    "Year" VARCHAR(4) NOT NULL,
+    "Quantity" INT NOT NULL,
+    "Genre" VARCHAR NOT NULL,
 
-ALTER TABLE public."Books"
+    CONSTRAINT "Books_pkey" PRIMARY KEY ("Id")
+);
+
+
+ALTER TABLE books
     OWNER to postgres;
 	
 	CREATE TABLE public.users
@@ -40,3 +38,14 @@ TABLESPACE pg_default;
 
 ALTER TABLE public.users
     OWNER to postgres;
+INSERT INTO books VALUES (0,'Посторонний','Альбер Камю','1234',3,'повесть');
+
+INSERT INTO books VALUES (1,'В поисках утраченного времени','Марсель Пруст','1927',2,'полуавтобиографический');
+
+INSERT INTO books VALUES (2,'Процесс','Франц Кафка','1925',1,'роман');
+
+INSERT INTO books VALUES (3,'Маленький принц','Антуан де Сент Экзюпери','1943',2,'повесть-сказка');
+
+INSERT INTO books VALUES (4,'Гроздья гнева','Джон Стейнбек','1939',4,'роман');
+
+INSERT INTO books VALUES (5,'По ком звонит колокол','Эрнест Хемингуэй','1940',2,'роман');

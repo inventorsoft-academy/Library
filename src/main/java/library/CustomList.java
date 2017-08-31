@@ -2,7 +2,8 @@ package library;
 
 import java.util.*;
 
-public class CustomList<T> implements List {
+public class CustomList<T> implements List<T> {
+
     private static final int DEFAULT_INITIAL_CAPACITY = 5;
     private static final Object[] EMPTY_ELEMENT_DATA = {};
     private transient Object[] customArrayListElementData;
@@ -21,7 +22,7 @@ public class CustomList<T> implements List {
     //empty
     public CustomList() {
         super();
-        this.customArrayListElementData = EMPTY_ELEMENT_DATA;
+        this.customArrayListElementData = new Object[DEFAULT_INITIAL_CAPACITY];
 
     }
 
@@ -44,26 +45,26 @@ public class CustomList<T> implements List {
     }
 
     @Override
-    public Object remove(int index) {
-        Object oldValue = (Object) customArrayListElementData[index];
+    public T remove(int index) {
+        Object oldValue = customArrayListElementData[index];
         int removeNumber = size - index - 1;
         if (removeNumber > 0) {
             System.arraycopy(customArrayListElementData, index + 1, customArrayListElementData, index, removeNumber);
         }
         customArrayListElementData[--size] = null;
-        return oldValue;
+        return (T)oldValue;
     }
 
     @Override
-    public Object get(int index) {
+    public T get(int index) {
         if (index >= size) {
             throw new ArrayIndexOutOfBoundsException("array index out of bound exception with index at" + index);
         }
-        return (Object) customArrayListElementData[index];
+        return  (T)customArrayListElementData[index];
     }
 
     @Override
-    public boolean add(Object e) {
+    public boolean add(T e) {
         ensureCapacity(size + 1);
 
         customArrayListElementData[size++] = e;
@@ -81,7 +82,6 @@ public class CustomList<T> implements List {
         if (minCapacity - customArrayListElementData.length > 0)
 
             growCustomArrayList(minCapacity);
-
     }
 
     private void growCustomArrayList(int minCapacity) {
@@ -96,7 +96,6 @@ public class CustomList<T> implements List {
         customArrayListElementData = Arrays.copyOf(customArrayListElementData, newCapacity);
 
     }
-
 
     @Override
     public boolean remove(Object o) {
@@ -114,7 +113,6 @@ public class CustomList<T> implements List {
         return false;
     }
 
-
     @Override
     public Object set(int index, Object element) {
         return null;
@@ -124,7 +122,6 @@ public class CustomList<T> implements List {
     public void add(int index, Object element) {
 
     }
-
 
     @Override
     public int indexOf(Object o) {

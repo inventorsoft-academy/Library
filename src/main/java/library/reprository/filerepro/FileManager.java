@@ -4,7 +4,7 @@ import library.model.Book;
 import library.model.User;
 
 import java.util.List;
-
+//todo rename repository!
 public interface FileManager {
     List<Book> getBooksList();
     List<User> getUsersList();

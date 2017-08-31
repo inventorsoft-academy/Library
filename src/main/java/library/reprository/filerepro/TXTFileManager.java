@@ -9,7 +9,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
 public class TXTFileManager implements FileManager {
     private static final MyLogger log = MyLogger.getCommonClass(TXTFileManager.class);
 
@@ -80,7 +79,8 @@ public class TXTFileManager implements FileManager {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
             clearFile(file);
             for (Book book : books) {
-                String string = book.getName() +
+                String string = book.getId()+
+                        "/"+book.getName() +
                         "/" + book.getAuthor() +
                         "/" +book.getYear() +
                         "/" +book.getGenre()+

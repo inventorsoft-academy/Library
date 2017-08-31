@@ -5,7 +5,8 @@ import library.model.User;
 
 import java.util.List;
 import java.util.Optional;
-
+//todo drop package this.
+//todo buy-buy!
 public interface BookRepro {
     List<Book> getAllBooks();
     void rentSomeBook(User user, int id);

@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 public class DefaultBookRepro implements BookRepro  {
-
+//todo
     private FileManager fileManager;
 
     private List<Book> storage;
@@ -47,7 +47,16 @@ public class DefaultBookRepro implements BookRepro  {
 
     @Override
     public boolean createNewBook(Book book) {
-        return false;
+        Long i=  storage.get(storage.size()-1).getId();
+           book.setId(i+1);
+
+        if (book.validate().isEmpty()) {
+            storage.add(book);
+            fileManager.saveBooks(storage);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

@@ -43,6 +43,17 @@ public class LibraryController {
                 : new ResponseEntity("Not found",HttpStatus.NOT_FOUND);
     }
 
+    @RequestMapping (value="/createbook",method=RequestMethod.POST)
+    public @ResponseBody String createSongFromJson(@RequestParam String name,
+                                                       @RequestParam String author,
+                                                       @RequestParam String year,
+                                                       @RequestParam String ganre,
+                                                       @RequestParam String quantity) {
+
+        return bookManager.createNewBook(new Book(name,author,year,ganre,Integer.parseInt(quantity)))
+        ?"done"
+        :"none";
+    }
 
 
 /*    @PutMapping("/update/{bookId:\\d+}")

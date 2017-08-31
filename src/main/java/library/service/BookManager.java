@@ -64,13 +64,8 @@ public class BookManager implements Deleter, BookService {
 
     @Override
     public boolean createNewBook(Book book) {
-        if (book.validate().isEmpty()) {
-            allBooks.add(book);
-            fileManager.saveBooks(allBooks);
-            return true;
-        } else {
-            return false;
-        }
+        bookRepro.createNewBook(book);
+      return true;
     }
 
     @Override
