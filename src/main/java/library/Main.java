@@ -14,7 +14,6 @@ public class Main {
         //new LibraryManager().startScreen();
         SpringApplication.run(Main.class,args);
 
-
       /*  CustomList<String> strList= new CustomList<>();
 
         strList.add("str1");
