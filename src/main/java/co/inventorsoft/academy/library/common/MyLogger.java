@@ -1,4 +1,4 @@
-package library.common;
+package co.inventorsoft.academy.library.common;
 
 import java.io.BufferedWriter;
 import java.io.File;

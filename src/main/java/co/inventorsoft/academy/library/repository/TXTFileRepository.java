@@ -1,16 +1,15 @@
-package library.reprository.filerepro;
+package co.inventorsoft.academy.library.repository;
 
-import library.model.Book;
-import library.model.User;
-import library.common.MyLogger;
-import org.springframework.stereotype.Component;
+import co.inventorsoft.academy.library.common.MyLogger;
+import co.inventorsoft.academy.library.model.Book;
+import co.inventorsoft.academy.library.model.User;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TXTFileManager implements FileManager {
-    private static final MyLogger log = MyLogger.getCommonClass(TXTFileManager.class);
+public class TXTFileRepository implements FileRepository {
+    private static final MyLogger log = MyLogger.getCommonClass(TXTFileRepository.class);
 
     private static final String BOOKS_FILE_PATH = "src\\main\\resources\\Books.txt";
 
@@ -24,8 +23,7 @@ public class TXTFileManager implements FileManager {
                 String[] currentLine;
                 while ((line = reader.readLine()) != null) {
                     currentLine = line.split("/");
-                    usersList.add(new User(currentLine[0], currentLine[1],
-                            currentLine[2]));
+                    usersList.add(new User(currentLine[0], currentLine[1], currentLine[2]));
                 }
             } catch (IOException e) {
                 log.error("FILE NOT FOUND!" +"\n"+e.getMessage());
@@ -42,8 +40,8 @@ public class TXTFileManager implements FileManager {
                 String[] currentLine;
                 while ((line = reader.readLine()) != null) {
                     currentLine = line.split("/");
-                    booksList.add(new Book(Long.parseLong(currentLine[0]), currentLine[1], currentLine[2],
-                            currentLine[3],currentLine[4],Integer.parseInt(currentLine[5])));
+//                    booksList.add(new Book(Long.parseLong(currentLine[0]), currentLine[1], currentLine[2],
+//                            currentLine[3],currentLine[4],Integer.parseInt(currentLine[5])));
                 }
             } catch (IOException e) {
                 log.error("FILE NOT FOUND!"+"\n"+e.getMessage());
@@ -51,6 +49,21 @@ public class TXTFileManager implements FileManager {
             log.info("Loaded books list from file");
             return booksList;
         }
+
+    @Override
+    public Book getBookById(Long id) {
+        return null;
+    }
+
+    @Override
+    public Book updateBook(Long id, Book book) {
+        return null;
+    }
+
+    @Override
+    public Book deleteBook(Long id) {
+        return null;
+    }
 
     @Override
      public void saveUsers(List<User> users) {
@@ -71,6 +84,21 @@ public class TXTFileManager implements FileManager {
         } catch (IOException ex) {
             log.error("FILE NOT FOUND!"+"\n"+ex.getMessage());
         }
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return null;
+    }
+
+    @Override
+    public User updateUser(Long id, User user) {
+        return null;
+    }
+
+    @Override
+    public User deleteUser(Long id) {
+        return null;
     }
 
     @Override

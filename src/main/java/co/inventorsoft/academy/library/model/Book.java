@@ -1,45 +1,33 @@
-package library.model;
+package co.inventorsoft.academy.library.model;
 
-import library.model.validation.Validator;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-@Getter
+
 @Setter
+@Getter
+@EqualsAndHashCode
 public class Book implements Validator {
+
     private Long id;
+    private Long idUser;
     private String name;
     private String year;
     private String author;
     private String genre;
-    public Date rentStarts;
-    public Date rentExpires;
-    public int quantity;
+    private LocalDateTime rentStarts;
+    private LocalDateTime rentExpires;
+    private int quantity;
 
-    public Book(){};
-
-    public Book(Book book){
-        this.name = book.name;
-        this.year = book.year;
-        this.author = book.author;
-        this.genre = book.genre;
-        this.quantity = book.quantity;
-
-    };
-    public Book(final Long id,final String name, final String author, final String year, final String genre, int quantity) {
-        this.id=id;
-        this.name = name;
-        this.year = year;
-        this.author = author;
-        this.genre = genre;
-        this.quantity = quantity;
+    public Book() {
     }
-    public Book(final String name, final String author, final String year, final String genre, int quantity) {
+
+    public Book(String name, String year, String author, String genre, int quantity) {
         this.name = name;
         this.year = year;
         this.author = author;
@@ -47,36 +35,69 @@ public class Book implements Validator {
         this.quantity = quantity;
     }
 
-/*
-
-    public Date getRentStarts() {
-        return rentStarts;
+    public Long getId() {
+        return id;
     }
 
-    public Date getRentExpires() {
-        return rentExpires;
+    public void setId(Long id) {
+        this.id = id;
     }
 
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getYear() {
         return year;
     }
 
+    public void setYear(String year) {
+        this.year = year;
+    }
 
     public String getAuthor() {
         return author;
     }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
     public String getGenre() {
         return genre;
     }
 
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public LocalDateTime getRentStarts() {
+        return rentStarts;
+    }
+
+    public void setRentStarts(LocalDateTime rentStarts) {
+        this.rentStarts = rentStarts;
+    }
+
+    public LocalDateTime getRentExpires() {
+        return rentExpires;
+    }
+
+    public void setRentExpires(LocalDateTime rentExpires) {
+        this.rentExpires = rentExpires;
+    }
 
     public int getQuantity() {
         return quantity;
@@ -85,24 +106,6 @@ public class Book implements Validator {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-*/
 
     @Override
     public Map<String, String> validate() {
@@ -128,7 +131,7 @@ public class Book implements Validator {
         if (author.length() > 35 || author.length() < 4) {
             valid.put("Name", "Impossible name length!");
         }
-        if (quantity<=0) {
+        if (quantity <= 0) {
             valid.put("Quantity", "Wrong quantity!");
         }
 
