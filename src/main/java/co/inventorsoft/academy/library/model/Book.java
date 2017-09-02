@@ -4,7 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,19 +19,17 @@ public class Book implements Validator {
     private String year;
     private String author;
     private String genre;
-    private LocalDateTime rentStarts;
-    private LocalDateTime rentExpires;
-    private int quantity;
+    private String rentStarts;
+    private String rentExpires;
 
     public Book() {
     }
 
-    public Book(String name, String year, String author, String genre, int quantity) {
+    public Book(String name, String year, String author, String genre) {
         this.name = name;
         this.year = year;
         this.author = author;
         this.genre = genre;
-        this.quantity = quantity;
     }
 
     public Long getId() {
@@ -83,28 +80,20 @@ public class Book implements Validator {
         this.genre = genre;
     }
 
-    public LocalDateTime getRentStarts() {
+    public String getRentStarts() {
         return rentStarts;
     }
 
-    public void setRentStarts(LocalDateTime rentStarts) {
+    public void setRentStarts(String rentStarts) {
         this.rentStarts = rentStarts;
     }
 
-    public LocalDateTime getRentExpires() {
+    public String getRentExpires() {
         return rentExpires;
     }
 
-    public void setRentExpires(LocalDateTime rentExpires) {
+    public void setRentExpires(String rentExpires) {
         this.rentExpires = rentExpires;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     @Override
@@ -130,9 +119,6 @@ public class Book implements Validator {
 
         if (author.length() > 35 || author.length() < 4) {
             valid.put("Name", "Impossible name length!");
-        }
-        if (quantity <= 0) {
-            valid.put("Quantity", "Wrong quantity!");
         }
 
         return valid;

@@ -23,34 +23,24 @@ public class MyLogger {
     }
 
     private void write(String massage) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(pathToLogs), true))) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(pathToLogs), true));
             writer.append(massage);
             writer.newLine();
-            writer.flush();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            writer.close();
+        } catch (IOException ignored) {
         }
     }
+
     public void info(String massage) {
-            System.out.println(" Info: "+ massage);
+        write(LocalDateTime.now() + " INFO: " + massage);
     }
 
     public void warn(String massage) {
-        String log = LocalDateTime.now() + " Warn: " + className + "  " + massage;
-        System.out.println(" Warn: " + className + "  " + massage);
-        write(log);
+        write(LocalDateTime.now() + " WARN: " + className + "  " + massage);
     }
 
     public void error(String massage) {
-        String log = LocalDateTime.now() + " Error: " + className + " - " + massage;
-        System.out.println(" Error: " + className + " - " + massage);
-        write(log);
+        write(LocalDateTime.now() + " ERROR: " + className + " - " + massage);
     }
-
-
-    }
-
-
-
-
-
+}

@@ -5,13 +5,13 @@ import co.inventorsoft.academy.library.model.User;
 import java.util.List;
 
 public interface UserService {
-    void saveUsers(List<User> allUsersList);
+    boolean saveUsers(User user);
 
     List<User> getUsersList();
 
     User getUserById(Long id);
 
-    User updateUser(Long id, User user);
+    boolean updateUser(Long id, User user);
 
-    User deleteUser(Long id);
+    boolean deleteUser(Long id);
 }

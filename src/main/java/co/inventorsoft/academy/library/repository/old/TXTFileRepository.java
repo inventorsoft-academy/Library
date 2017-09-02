@@ -1,4 +1,4 @@
-package co.inventorsoft.academy.library.repository;
+package co.inventorsoft.academy.library.repository.old;
 
 import co.inventorsoft.academy.library.common.MyLogger;
 import co.inventorsoft.academy.library.model.Book;
@@ -111,8 +111,7 @@ public class TXTFileRepository implements FileRepository {
                         "/"+book.getName() +
                         "/" + book.getAuthor() +
                         "/" +book.getYear() +
-                        "/" +book.getGenre()+
-                        "/" +book.getQuantity();
+                        "/" +book.getGenre();
                 writer.append(string);
                 writer.newLine();
                 writer.flush();
