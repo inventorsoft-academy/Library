@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -21,7 +20,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity createUser(@RequestBody User user){
+    public ResponseEntity createUser(@RequestBody User user) {
         if (userService.saveUsers(user)) {
             return new ResponseEntity(HttpStatus.CREATED);
         }
@@ -32,8 +31,8 @@ public class UserController {
     @ResponseBody
     public ResponseEntity<List<User>> readUsers() {
         List<User> users = userService.getUsersList();
-        if (users!=null){
-            return new ResponseEntity<>(users,HttpStatus.OK);
+        if (users != null) {
+            return new ResponseEntity<>(users, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

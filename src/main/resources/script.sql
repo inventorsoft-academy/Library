@@ -1,4 +1,4 @@
-CREATE TABLE books
+CREATE TABLE IF NOT EXISTS books
 (
   id         SERIAL PRIMARY KEY,
   user_id    INT,
@@ -11,7 +11,7 @@ CREATE TABLE books
 );
 
 
-CREATE TABLE users
+CREATE TABLE IF NOT EXISTS users
 (
   id         SERIAL      NOT NULL,
   first_name VARCHAR(40) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE users
 );
 
 
-INSERT INTO books
+INSERT INTO  books
 VALUES (1, NULL, 'В поисках утраченного времени', 'Марсель Пруст', '1927', 'полуавтобиографический', NULL, NULL);
 INSERT INTO books VALUES (2, NULL, 'Процесс', 'Франц Кафка', '1925', 'роман', NULL, NULL);
 INSERT INTO books

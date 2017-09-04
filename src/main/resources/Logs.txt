@@ -1,1 +1,142 @@
  Info: org.postgresql.jdbc4.Jdbc4Statement@7b450041
+2017-09-02T17:26:43.400 INFO: org.postgresql.jdbc4.Jdbc4Statement@78518c9a
+2017-09-03T14:08:11.605 INFO: org.postgresql.jdbc4.Jdbc4Statement@7da97bc8
+2017-09-03T14:08:27.785 INFO: DELETE FROM users WHERE id = '4'
+2017-09-03T14:08:27.797 INFO: org.postgresql.jdbc4.Jdbc4Statement@24cf94d9
+2017-09-03T14:09:55.979 INFO: DELETE FROM users WHERE id = '3'
+2017-09-03T14:09:55.989 INFO: org.postgresql.jdbc4.Jdbc4Statement@4b8b2a43
+2017-09-03T14:14:22.678 INFO: org.postgresql.jdbc4.Jdbc4Statement@68e0dbd4
+2017-09-03T14:17:55.945 INFO: org.postgresql.jdbc4.Jdbc4Statement@7b92b4f7
+2017-09-03T15:27:41.848 INFO: org.postgresql.jdbc4.Jdbc4Statement@454cdd42
+2017-09-03T16:10:21.406 INFO: org.postgresql.jdbc4.Jdbc4Statement@668f3255
+2017-09-03T16:10:47.093 INFO: org.postgresql.jdbc4.Jdbc4Statement@6b35640b
+2017-09-03T16:24:04.024 INFO: org.postgresql.jdbc4.Jdbc4Statement@1b616dee
+2017-09-03T16:26:22.584 INFO: org.postgresql.jdbc4.Jdbc4Statement@7ede5dc5
+2017-09-03T16:26:48.606 INFO: org.postgresql.jdbc4.Jdbc4Statement@6f5825d0
+2017-09-03T16:32:25.149 INFO: org.postgresql.jdbc4.Jdbc4Statement@33044ce8
+2017-09-03T16:37:53.077 INFO: org.postgresql.jdbc4.Jdbc4Statement@3cbf35ff
+2017-09-03T16:39:19.299 INFO: org.postgresql.jdbc4.Jdbc4Statement@41734133
+2017-09-03T16:41:52.561 INFO: org.postgresql.jdbc4.Jdbc4Statement@662728b8
+2017-09-03T16:41:59.568 INFO: org.postgresql.jdbc4.Jdbc4Statement@742636b5
+2017-09-03T16:42:08.244 INFO: org.postgresql.jdbc4.Jdbc4Statement@26daf5c0
+2017-09-03T16:43:24.605 INFO: org.postgresql.jdbc4.Jdbc4Statement@5a94cd56
+2017-09-03T16:43:35.476 INFO: org.postgresql.jdbc4.Jdbc4Statement@26423054
+2017-09-03T16:44:13.677 INFO: org.postgresql.jdbc4.Jdbc4Statement@3278cc18
+2017-09-03T16:44:26.269 INFO: org.postgresql.jdbc4.Jdbc4Statement@7ee3f10a
+2017-09-03T16:46:58.271 INFO: org.postgresql.jdbc4.Jdbc4Statement@3fe2438a
+2017-09-03T16:47:53.014 INFO: org.postgresql.jdbc4.Jdbc4Statement@6218b0a4
+2017-09-03T16:48:18.766 INFO: org.postgresql.jdbc4.Jdbc4Statement@3124b655
+2017-09-03T16:48:21.954 INFO: org.postgresql.jdbc4.Jdbc4Statement@2c7ec833
+2017-09-03T16:48:24.305 INFO: org.postgresql.jdbc4.Jdbc4Statement@b25dae3
+2017-09-03T16:48:33.158 INFO: org.postgresql.jdbc4.Jdbc4Statement@4b4fbb1a
+2017-09-03T17:06:09.360 INFO: org.postgresql.jdbc4.Jdbc4Statement@36475e8f
+2017-09-03T17:06:10.776 INFO: org.postgresql.jdbc4.Jdbc4Statement@3be170b2
+2017-09-03T17:06:22.475 INFO: DELETE FROM books WHERE id = '6'
+2017-09-03T17:06:22.488 INFO: org.postgresql.jdbc4.Jdbc4Statement@271a2283
+2017-09-03T17:07:53.783 INFO: DELETE FROM books WHERE id = '7'
+2017-09-03T17:07:53.794 INFO: org.postgresql.jdbc4.Jdbc4Statement@b1a9b44
+2017-09-03T17:25:17.856 INFO: org.postgresql.jdbc4.Jdbc4Statement@7345c623
+2017-09-03T17:27:53.894 INFO: org.postgresql.jdbc4.Jdbc4Statement@471d779
+2017-09-03T17:29:00.792 INFO: org.postgresql.jdbc4.Jdbc4Statement@494a73cf
+2017-09-03T17:36:54.884 INFO: org.postgresql.jdbc4.Jdbc4Statement@f9ffdb2
+2017-09-03T17:38:50.171 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (5, , , null).
+2017-09-03T17:43:02.440 INFO: org.postgresql.jdbc4.Jdbc4Statement@8b1bb0b
+2017-09-03T17:43:04.557 INFO: org.postgresql.jdbc4.Jdbc4Statement@7ca97dd0
+2017-09-03T17:43:05.597 INFO: org.postgresql.jdbc4.Jdbc4Statement@16ba2c86
+2017-09-03T17:43:06.915 INFO: org.postgresql.jdbc4.Jdbc4Statement@7485f6d6
+2017-09-03T17:43:07.938 INFO: org.postgresql.jdbc4.Jdbc4Statement@16f7e0b6
+2017-09-03T17:46:28.851 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (6, , , null).
+2017-09-03T17:46:41.226 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (7, f, d, null).
+2017-09-03T17:46:44.455 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (8, f, d, null).
+2017-09-03T17:47:42.862 INFO: org.postgresql.jdbc4.Jdbc4Statement@5389912b
+2017-09-03T17:48:08.159 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (9, Koly, Koly, null).
+2017-09-03T17:48:09.390 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (10, Koly, Koly, null).
+2017-09-03T17:48:09.574 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (11, Koly, Koly, null).
+2017-09-03T17:48:09.743 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (12, Koly, Koly, null).
+2017-09-03T17:48:09.909 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (13, Koly, Koly, null).
+2017-09-03T17:48:10.072 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (14, Koly, Koly, null).
+2017-09-03T17:48:10.215 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (15, Koly, Koly, null).
+2017-09-03T17:48:10.382 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (16, Koly, Koly, null).
+2017-09-03T17:48:10.543 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (17, Koly, Koly, null).
+2017-09-03T17:48:10.704 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (18, Koly, Koly, null).
+2017-09-03T17:48:10.877 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (19, Koly, Koly, null).
+2017-09-03T17:48:11.064 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (20, Koly, Koly, null).
+2017-09-03T17:48:11.206 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (21, Koly, Koly, null).
+2017-09-03T17:48:11.357 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (22, Koly, Koly, null).
+2017-09-03T17:48:11.518 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (23, Koly, Koly, null).
+2017-09-03T17:48:11.669 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (24, Koly, Koly, null).
+2017-09-03T17:49:16.129 INFO: org.postgresql.jdbc4.Jdbc4Statement@3a70be29
+2017-09-03T17:49:23.229 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (25, Koly, Koly, null).
+2017-09-03T17:50:01.337 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (26, Koly, Koly, null).
+2017-09-03T17:50:03.167 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (27, , , null).
+2017-09-03T17:50:03.171 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (28, , , null).
+2017-09-03T17:50:03.171 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (29, , , null).
+2017-09-03T17:50:06.555 INFO: org.postgresql.jdbc4.Jdbc4Statement@5e2cfb31
+2017-09-03T17:50:12.911 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (30, dfgfg, trhhtrh, null).
+2017-09-03T17:50:14.864 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (31, dfgfg, trhhtrh, null).
+2017-09-03T17:50:17.073 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (32, dfgfg, trhhtrh, null).
+2017-09-03T17:50:17.513 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (33, dfgfg, trhhtrh, null).
+2017-09-03T17:50:18.127 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (34, dfgfg, trhhtrh, null).
+2017-09-03T17:50:18.303 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (35, dfgfg, trhhtrh, null).
+2017-09-03T17:50:18.461 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (36, dfgfg, trhhtrh, null).
+2017-09-03T17:50:18.608 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (37, dfgfg, trhhtrh, null).
+2017-09-03T17:50:18.791 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (38, dfgfg, trhhtrh, null).
+2017-09-03T17:50:18.942 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (39, dfgfg, trhhtrh, null).
+2017-09-03T17:50:19.095 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (40, dfgfg, trhhtrh, null).
+2017-09-03T17:50:19.270 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (41, dfgfg, trhhtrh, null).
+2017-09-03T17:50:19.544 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (42, dfgfg, trhhtrh, null).
+2017-09-03T17:50:21.107 INFO: org.postgresql.jdbc4.Jdbc4Statement@74d5162e
+2017-09-04T10:48:56.128 INFO: org.postgresql.jdbc4.Jdbc4Statement@10396eec
+2017-09-04T10:49:03.200 INFO: org.postgresql.jdbc4.Jdbc4Statement@517f13b7
+2017-09-04T10:49:15.984 INFO: INSERT INTO users (first_name, last_name, passport) VALUES('Vadym','Petrenko','FH-458235')
+2017-09-04T10:49:21.469 INFO: org.postgresql.jdbc4.Jdbc4Statement@67c86fbb
+2017-09-04T11:42:17.279 INFO: org.postgresql.jdbc4.Jdbc4Statement@1b21bfdb
+2017-09-04T11:42:28.810 INFO: DELETE FROM users WHERE id = '43'
+2017-09-04T11:42:28.828 INFO: org.postgresql.jdbc4.Jdbc4Statement@30ba3ae6
+2017-09-04T11:42:34.577 INFO: org.postgresql.jdbc4.Jdbc4Statement@46b424f5
+2017-09-04T11:42:47.787 ERROR: null - ERROR: null value in column "passport" violates not-null constraint
+  Подробности: Failing row contains (44, hkhjkh, ghvhjvhgvghf, null).
+2017-09-04T11:43:29.136 INFO: org.postgresql.jdbc4.Jdbc4Statement@328857d5
+2017-09-04T11:43:33.867 INFO: org.postgresql.jdbc4.Jdbc4Statement@128a07e7
+2017-09-04T11:44:22.104 INFO: org.postgresql.jdbc4.Jdbc4Statement@19992f83
+2017-09-04T12:08:41.388 INFO: org.postgresql.jdbc4.Jdbc4Statement@1002dce2
+2017-09-04T12:08:42.456 INFO: org.postgresql.jdbc4.Jdbc4Statement@137ac021
+2017-09-04T12:09:16.315 INFO: org.postgresql.jdbc4.Jdbc4Statement@59d6d643

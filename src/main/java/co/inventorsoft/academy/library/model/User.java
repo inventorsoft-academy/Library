@@ -18,7 +18,7 @@ public class User implements Validator {
     private String firstName;
     private String lastName;
     private String passportNumber;
-    private List<Book> readersListOfBooks;
+    private List<Integer> readersListOfBooks;
 
     public User() {
         readersListOfBooks = new ArrayList<>();
@@ -63,11 +63,11 @@ public class User implements Validator {
         this.passportNumber = passportNumber;
     }
 
-    public List<Book> getReadersListOfBooks() {
+    public List<Integer> getReadersListOfBooks() {
         return readersListOfBooks;
     }
 
-    public void setReadersListOfBooks(List<Book> readersListOfBooks) {
+    public void setReadersListOfBooks(List<Integer> readersListOfBooks) {
         this.readersListOfBooks = readersListOfBooks;
     }
 

@@ -1,6 +1,8 @@
 package co.inventorsoft.academy.library.repository;
 
 import co.inventorsoft.academy.library.common.MyLogger;
+import co.inventorsoft.academy.library.common.custom_exception.DBConnectionException;
+import co.inventorsoft.academy.library.common.custom_exception.DBWorkException;
 import co.inventorsoft.academy.library.model.User;
 import co.inventorsoft.academy.library.util.AppConstants;
 
@@ -16,18 +18,18 @@ public class DefaultUserRepository implements UserRepository {
     private MyLogger log = new MyLogger();
 
     @PostConstruct
-    private void init() {
+    private void init() throws DBConnectionException {
         try {
             connection = DriverManager.getConnection(AppConstants.URL_DB, AppConstants.USER, AppConstants.PASSWORD);
             Class.forName(AppConstants.DRIVER);
         } catch (SQLException | ClassNotFoundException e) {
-            //todo handle exception (program not run(404))
             log.error(e.getMessage());
+            throw new DBConnectionException("No connection to data base", e.fillInStackTrace());
         }
     }
 
     @Override
-    public boolean createUsers(User user) {
+    public boolean createUsers(User user) throws DBWorkException {
         try {
             PreparedStatement statement = connection
                     .prepareStatement(AppConstants.CREATE_USER);
@@ -40,13 +42,12 @@ public class DefaultUserRepository implements UserRepository {
             return true;
         } catch (SQLException e) {
             log.error(e.getMessage());
-            //todo handle exception (program not run(417 or 500))
-            return false;
+            throw new DBWorkException("Error create user", e.fillInStackTrace());
         }
     }
 
     @Override
-    public List<User> readUsersList() {
+    public List<User> readUsersList() throws DBWorkException {
         List<User> users = new ArrayList<>();
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(AppConstants.READ_USERS)) {
@@ -63,13 +64,12 @@ public class DefaultUserRepository implements UserRepository {
             return users;
         } catch (SQLException e) {
             log.error(e.getMessage());
-            //todo handle exception (continue(417 or 500))
+            throw new DBWorkException("Error read user", e.fillInStackTrace());
         }
-        return null;
     }
 
     @Override
-    public User readUserById(Long id) {
+    public User readUserById(Long id) throws DBWorkException {
         List<User> users = readUsersList();
         if (users != null) {
             for (User user : users) {
@@ -82,7 +82,7 @@ public class DefaultUserRepository implements UserRepository {
     }
 
     @Override
-    public boolean updateUser(Long id, User user) {
+    public boolean updateUser(Long id, User user) throws DBWorkException {
         try {
             PreparedStatement statement = connection
                     .prepareStatement(AppConstants.UPDATE_USER);
@@ -96,13 +96,12 @@ public class DefaultUserRepository implements UserRepository {
             return true;
         } catch (SQLException e) {
             log.error(e.getMessage());
-            //todo handle exception (program not run(417 or 500))
-            return false;
+            throw new DBWorkException("Error update user user", e.fillInStackTrace());
         }
     }
 
     @Override
-    public boolean deleteUser(Long id) {
+    public boolean deleteUser(Long id) throws DBWorkException{
         try {
             PreparedStatement statement = connection.prepareStatement(AppConstants.DELETE_USER);
             statement.setLong(1, id);
@@ -112,17 +111,17 @@ public class DefaultUserRepository implements UserRepository {
             return true;
         } catch (SQLException e) {
             log.error(e.getMessage());
-            return false;
+            throw new DBWorkException("Error delete user",e.fillInStackTrace());
         }
     }
 
     @PreDestroy
-    private void close() {
+    private void close() throws DBConnectionException{
         try {
             connection.close();
         } catch (SQLException e) {
-            //todo
             log.error(e.getMessage());
+            throw new DBConnectionException("Error disconnect to data base",e.fillInStackTrace());
         }
     }
 

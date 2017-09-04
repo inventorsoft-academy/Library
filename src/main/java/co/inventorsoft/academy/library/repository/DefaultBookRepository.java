@@ -1,6 +1,8 @@
 package co.inventorsoft.academy.library.repository;
 
 import co.inventorsoft.academy.library.common.MyLogger;
+import co.inventorsoft.academy.library.common.custom_exception.DBConnectionException;
+import co.inventorsoft.academy.library.common.custom_exception.DBWorkException;
 import co.inventorsoft.academy.library.model.Book;
 import co.inventorsoft.academy.library.util.AppConstants;
 
@@ -15,18 +17,18 @@ public class DefaultBookRepository implements BookRepository {
     private MyLogger log = new MyLogger();
 
     @PostConstruct
-    private void init() {
+    private void init() throws DBConnectionException{
         try {
             connection = DriverManager.getConnection(AppConstants.URL_DB, AppConstants.USER, AppConstants.PASSWORD);
             Class.forName(AppConstants.DRIVER);
         } catch (SQLException | ClassNotFoundException e) {
-            //todo handle exception (program not run(404))
             log.error(e.getMessage());
+            throw new DBConnectionException("Error connecting to data base",e.fillInStackTrace());
         }
     }
 
     @Override
-    public boolean createBooks(Book book) {
+    public boolean createBooks(Book book) throws DBWorkException{
         try {
             PreparedStatement statement = connection
                     .prepareStatement(AppConstants.CREATE_BOOK);
@@ -39,13 +41,12 @@ public class DefaultBookRepository implements BookRepository {
             return true;
         } catch (SQLException e) {
             log.error(e.getMessage());
-            //todo handle exception (program not run(417 or 500))
-            return false;
+            throw new DBConnectionException("Error create book",e.fillInStackTrace());
         }
     }
 
     @Override
-    public List<Book> readBooks() {
+    public List<Book> readBooks() throws DBWorkException{
         List<Book> books = new ArrayList<>();
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(AppConstants.READ_BOOKS)) {
@@ -66,12 +67,11 @@ public class DefaultBookRepository implements BookRepository {
             return books;
         } catch (SQLException e) {
             log.error(e.getMessage());
-            //todo handle exception (continue(417 or 500))
+            throw new DBConnectionException("Error read book",e.fillInStackTrace());
         }
-        return null;
     }
 
-    public Book readBookById(Long id) {
+    public Book readBookById(Long id) throws DBWorkException{
         List<Book> books = readBooks();
         for (Book book : books) {
             if (id.equals(book.getId())) {
@@ -81,7 +81,7 @@ public class DefaultBookRepository implements BookRepository {
         return null;
     }
 
-    public boolean updateBook(Long id, Book book) {
+    public boolean updateBook(Long id, Book book) throws DBWorkException{
         try {
             PreparedStatement statement = connection
                     .prepareStatement(AppConstants.UPDATE_BOOK);
@@ -95,12 +95,11 @@ public class DefaultBookRepository implements BookRepository {
             return true;
         } catch (SQLException e) {
             log.error(e.getMessage());
-            //todo handle exception (program not run(417 or 500))
-            return false;
+            throw new DBConnectionException("Error update book",e.fillInStackTrace());
         }
     }
 
-    public boolean deleteBook(Long id) {
+    public boolean deleteBook(Long id) throws DBWorkException{
         try {
             PreparedStatement statement = connection.prepareStatement(AppConstants.DELETE_BOOK);
             statement.setLong(1, id);
@@ -110,7 +109,7 @@ public class DefaultBookRepository implements BookRepository {
             return true;
         } catch (SQLException e) {
             log.error(e.getMessage());
-            return false;
+            throw new DBConnectionException("Error delete book",e.fillInStackTrace());
         }
     }
 
@@ -119,8 +118,8 @@ public class DefaultBookRepository implements BookRepository {
         try {
             connection.close();
         } catch (SQLException e) {
-            //todo
             log.error(e.getMessage());
+            throw new DBConnectionException("Error disconnecting to data base",e.fillInStackTrace());
         }
     }
 }
